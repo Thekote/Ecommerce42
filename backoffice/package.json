@@ -1,0 +1,14 @@
+{
+  "name": "backoffice",
+  "version": "1.0.0",
+  "description": "backend for Ecommerce",
+  "main": "index.js",
+  "repository": "https://github.com/Thekote/Ecommerce42",
+  "author": "Guilherme Monteiro",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "axios": "^0.23.0",
+    "express": "^4.17.1"
+  }
+}
