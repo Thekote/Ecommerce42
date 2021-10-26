@@ -1,4 +1,4 @@
-const client = require('./config/db.config') 
+const sequelize = require('./config/db.config') 
 const express = require("express");
 const cors = require("cors");
 
@@ -19,6 +19,4 @@ app.listen(8080, () => {
     console.log("Server started at port 8080");
 })
 
-client.connect().then(() => {
-    console.log("connected to db")
-})
+sequelize.authenticate().then(console.log("Connected to db"));
