@@ -1,8 +1,10 @@
-const sequelize = require('./config/db.config') 
 const express = require("express");
 const cors = require("cors");
 
 const app = express();
+
+
+const routes = require('./routes/router.js');
 
 
 var corsOptions = {
@@ -13,10 +15,7 @@ app.use(cors(corsOptions));
 
 
 app.use(express.json());
+app.use(routes);
 app.use(express.urlencoded({ extended: true}));
 
-app.listen(8080, () => {
-    console.log("Server started at port 8080");
-})
-
-sequelize.authenticate().then(console.log("Connected to db"));
+app.listen(3000, () => console.log("Server started at port 3000"));
