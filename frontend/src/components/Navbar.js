@@ -24,6 +24,7 @@ const Navbar = () => {
 }
 
 const Nav = styled.div`
+    height: 80px;
     padding: 0 2rem;
     display: flex;
     justify-content: space-between;
@@ -40,7 +41,7 @@ const MenuIcon = styled.div`
     span {
         height: 2px;
         width: 25px;
-        background-color: #7b7fda;
+        background-color: gray;
         margin-bottom: 4px;
         border-radius: 2px;
     }
@@ -84,7 +85,7 @@ const Menu = styled.div`
 
 const Logo = styled.a`
     padding: 1rem 0;
-    color: #7b7fda;
+    color: gray;
     text-decoration: none;
     font-weight: 800;
     font-size: 1.7rem;
