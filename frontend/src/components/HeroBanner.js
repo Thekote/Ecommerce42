@@ -15,7 +15,7 @@ const BannerContainer = styled.div `
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: calc(100vh - 80px);
+    height: 50vh;
     background: url(https://www.enjoyintercambio.com/wp-content/uploads/2016/10/festival_cocktail_irlanda_enjoy_intercambio.jpg);
     color: gray;
 `;
