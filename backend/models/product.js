@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       Product.belongsTo(models.Category, {
-          foreignKey: categoryId });
+          foreignKey: 'categoryId' });
     }
   };
   Product.init({
@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Product',
+    tableName: 'Products'
   });
   return Product;
 };
