@@ -50,8 +50,8 @@ const updateCategory = async (req, res) => {
 const enableCategory = async (req, res) => {
     try {
         const category = await Category.findOne({where: {id: req.params.id}});
-        if(category.active === false){
-            category.active = true;
+        if(!category.isActive){
+            category.isActive = true;
             await category.save();
         } else {
             throw new Error ('Category already enabled');
@@ -68,8 +68,8 @@ const disableCategory = async (req, res) => {
     try {
         const category = await Category.findOne({where: {id: req.params.id}});
 
-        if(category.active === true){
-            category.active = false;
+        if(category.isActive){
+            category.isActive = false;
             await category.save();
         } else {
             throw new Error ('Category already disabled');
