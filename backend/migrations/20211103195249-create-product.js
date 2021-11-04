@@ -20,8 +20,12 @@ module.exports = {
       stock: {
         type: Sequelize.INTEGER
       },
-      active: {
+      isActive: {
         type: Sequelize.BOOLEAN
+      },
+      categoryId: {
+        type: Sequelize.INTEGER,
+        references: { model: "Categories", key: "id" }
       },
       createdAt: {
         allowNull: false,
