@@ -16,7 +16,7 @@ const Navbar = () => {
             </MenuIcon>
             <Menu isOpen={isOpen}>
                 <MenuLink href="">Bebidas</MenuLink>
-                <MenuLink href="">Kits</MenuLink>
+                <MenuLink href="">Kitss</MenuLink>
                 <MenuLink href="">Copos e taças</MenuLink>
             </Menu>
         </Nav>
