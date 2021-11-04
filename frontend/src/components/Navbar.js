@@ -24,6 +24,8 @@ const Navbar = () => {
 }
 
 const Nav = styled.div`
+    background-color: gray;
+    width: 80vw;
     height: 80px;
     padding: 0 2rem;
     display: flex;
