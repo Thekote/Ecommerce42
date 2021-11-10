@@ -50,8 +50,8 @@ const updateProduct = async (req, res) => {
 const enableProduct = async (req, res) => {
     try {
         const product = await Product.findOne({where: {id: req.params.id}});
-        if(product.active === false){
-            product.active = true;
+        if(!product.isActive){
+            product.isActive = true;
             await product.save();
         } else {
             throw new Error ('Product already enabled');
@@ -68,8 +68,8 @@ const disableProduct = async (req, res) => {
     try {
         const product = await Product.findOne({where: {id: req.params.id}});
 
-        if(product.active === true){
-            product.active = false;
+        if(product.isActive){
+            product.isActive = false;
             await product.save();
         } else {
             throw new Error ('Product already disabled');
