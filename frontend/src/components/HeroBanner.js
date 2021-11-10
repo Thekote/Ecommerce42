@@ -15,14 +15,10 @@ const BannerContainer = styled.div `
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 50vh;
-    background: url(https://www.enjoyintercambio.com/wp-content/uploads/2016/10/festival_cocktail_irlanda_enjoy_intercambio.jpg);
+    height: 60vh; //clamp(800px, 60vh, 80vh);
+    background: url(https://i.imgur.com/tFklJI9.jpg);
     color: gray;
 `;
-
-
-
-
 
 
 export default HeroBanner;

@@ -15,9 +15,9 @@ const Navbar = () => {
                 <span />
             </MenuIcon>
             <Menu isOpen={isOpen}>
-                <MenuLink href="">Bebidas</MenuLink>
-                <MenuLink href="">Kitss</MenuLink>
-                <MenuLink href="">Copos e taças</MenuLink>
+                <MenuLink href="/">Bebidas</MenuLink>
+                <MenuLink href="/">Kitss</MenuLink>
+                <MenuLink href="/">Copos e taças</MenuLink>
             </Menu>
         </Nav>
     )
@@ -70,6 +70,7 @@ const Menu = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
+    background: white;
 
     @media (max-width: 768px){
         overflow: hidden;
