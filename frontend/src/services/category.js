@@ -1,23 +1,23 @@
 import http from "../http-common.js";
 
 class CategoryDataService {
-    getAll() {
+    static getAll() {
         return http.get("/categories");
     };
 
-    get(id) {
+    static get(id) {
         return http.get(`/categories/${ id }`);
     };
 
-    create(data) {
+    static create(data) {
         return http.post("/categories", data);
     };
 
-    update(id, data) {
+    static update(id, data) {
         return http.put(`/categories/${ id }`, data);
     };
 
 
 }
 
-export default new CategoryDataService();
+export default CategoryDataService;
