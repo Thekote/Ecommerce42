@@ -1,9 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import Navbar from './components/Navbar'
-import HeroBanner from './components/HeroBanner'
-import GlobalStyle from './global'
-import ProductList from './components/ProductList'
+import React from 'react';
+import styled from 'styled-components';
+import Navbar from './components/Navbar';
+import HeroBanner from './components/HeroBanner';
+import GlobalStyle from './global';
+import ProductList from './components/ProductList';
+import AddProduct from './components/AddProduct';
 
 const App = () => (
     
@@ -13,6 +14,7 @@ const App = () => (
         <HeroBanner />
         <ContentContainer>
           <ProductList/>
+          <AddProduct/>
         </ContentContainer>
       </Container>
     
