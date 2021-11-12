@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { MdShoppingCart, MdAccountCircle } from "react-icons/md"
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -7,7 +8,7 @@ const Navbar = () => {
     return (
         <Nav>
             <Logo href="">
-                L<span>OGO</span>
+                LOGO
             </Logo>
             <MenuIcon onClick={() => setIsOpen(!isOpen)}>
                 <span />
@@ -18,7 +19,11 @@ const Navbar = () => {
                 <MenuLink href="/">Bebidas</MenuLink>
                 <MenuLink href="/">Kitss</MenuLink>
                 <MenuLink href="/">Copos e taças</MenuLink>
-            </Menu>
+                <MenuIcons>
+                    <MenuLink href="/"><MdAccountCircle /></MenuLink>
+                    <MenuLink href="/"><MdShoppingCart /></MenuLink>
+                </ MenuIcons>
+            </Menu>            
         </Nav>
     )
 }
@@ -33,6 +38,7 @@ const Nav = styled.div`
     align-items: center;
     flex-wrap: wrap;
     background: white;
+    font-family: 'Rubik', sans-serif;
 `;
 
 const MenuIcon = styled.div`
@@ -54,20 +60,21 @@ const MenuIcon = styled.div`
 `;
 
 const MenuLink = styled.a`
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     cursor: pointer;
     text-align: center;
     text-decoration: none; 
-    color: #67bc96;
+    color: black;
     transition: all 0.3s ease-in;
-    font-size: 0.9rem;
+    font-size: 1rem;
 
     &:hover {
-       color: #7b7fda;
+       color: gray;
     }
 `;
 
 const Menu = styled.div`
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,13 +91,11 @@ const Menu = styled.div`
 
 `;
 
-
-
 const Logo = styled.a`
     padding: 1rem 0;
     color: gray;
     text-decoration: none;
-    font-weight: 800;
+    font-weight: 600;
     font-size: 1.7rem;
     
     span {
@@ -99,6 +104,9 @@ const Logo = styled.a`
     }
 `;
 
-
+const MenuIcons = styled.div`
+    font-size: 2rem;
+    
+`
 
 export default Navbar

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { MdSearch } from 'react-icons/md'
 
 const HeroBanner = () => {
     return (
@@ -7,9 +8,9 @@ const HeroBanner = () => {
             <form>
                 <input type="text" id="search" placeholder="Buscar Produtos">
                 </input>
-                <div>
-                    [search icon]
-                </div>
+                <SearchButton>
+                    <MdSearch />
+                </SearchButton>
             </form>
             
             
@@ -41,6 +42,14 @@ const BannerContainer = styled.div `
         font-size: 1em;
     }
 `;
+
+const SearchButton = styled.div` 
+        display: flex;;
+        font-size: 2.5em;
+        color: white;
+  
+`
+
 
 
 export default HeroBanner;

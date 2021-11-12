@@ -21,7 +21,7 @@ const ProductCard = () => {
                     R$ 58,00
                 </ProdPrice>
                 <BtnAddCart>
-                    Add to Cart
+                    Adicionar ao carrinho
                 </BtnAddCart>
             </ProdInfo>
             
@@ -30,10 +30,13 @@ const ProductCard = () => {
 }
 
 const ProductContainer = styled.div`
-    border: 1px solid black;
+    font-family: 'Rubik', sans-serif;
+    //border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
     margin: 20px 0;
+    background-color: white;
+    box-shadow: 0px 5px 5px gray;
 
 `
 
@@ -42,6 +45,7 @@ const ProdImg = styled.div`
     width: 200px;
     height: 200px;
     margin-bottom: 10px;
+    border-radius: 5px;
 `
 
 const ProdInfo = styled.div`
@@ -72,9 +76,9 @@ const ProdPrice = styled.div`
 
 const BtnAddCart = styled.div`
     color: white;
-    width: 100%;
+    width: 100%; 
     height: 40px;
-    background-color: gray;
+    background-color: #F2B705; // ${props => `${props.backgroundColor}`};
     border-radius: 5px;
     display: flex;
     justify-content: center;

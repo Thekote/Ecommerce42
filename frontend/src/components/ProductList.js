@@ -18,12 +18,23 @@ const ProductList = () => {
 }
 
 const ProductsContainer = styled.div`
-    background-color: #fff;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 80vw;
+    background-color: #fff8;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 20px;    
     padding: 20px;
+
+    @media (max-width: 1240px){
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (max-width: 930px){
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 630px){
+        grid-template-columns: 1fr;
+    }
 
 `
 
