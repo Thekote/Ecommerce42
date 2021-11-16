@@ -5,7 +5,7 @@ const ProductCard = () => {
     return (
         <ProductContainer>
             <ProdImg>
-
+                <img src="https://i.imgur.com/Td5qbSq.png" alt= "Coqueteira" />
             </ProdImg>
             <ProdInfo>
                 <ProdName>
@@ -31,21 +31,29 @@ const ProductCard = () => {
 
 const ProductContainer = styled.div`
     font-family: 'Rubik', sans-serif;
-    //border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
     margin: 20px 0;
     background-color: white;
     box-shadow: 0px 5px 5px gray;
-
+    display: flex;
+    flex-direction: column;
+    
 `
 
 const ProdImg = styled.div`
-    background-color: gray;
-    width: 200px;
+    background-color: white;
+    width: 100%;
     height: 200px;
     margin-bottom: 10px;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        height: 100%;
+    }
 `
 
 const ProdInfo = styled.div`

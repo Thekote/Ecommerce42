@@ -20,31 +20,16 @@ const App = () => (
 
 
 const Container = styled.div`
-  background: gray;
+  background: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-`
-
-const NavContainer = styled.div`
-  display: flex;
-  justify-content: center;
 `
 
 const ContentContainer = styled.div`
   display: flex;
   justify-content: space-around;
 `
-
-const colors = {
-  lightBlue: '#05F2F2',
-  yellow: '#F2B705',
-  orange: '#F27405',
-  red: '#F20505',
-  dark: '#0D0D0D'
-}
-
-
 
 export default App
 
