@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { IconContext } from 'react-icons'
+import { MdShoppingCart, MdAccountCircle } from "react-icons/md"
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -7,7 +9,7 @@ const Navbar = () => {
     return (
         <Nav>
             <Logo href="">
-                L<span>OGO</span>
+                <img src="https://i.imgur.com/P6KEUmH.png" alt="Logo BarShop" />
             </Logo>
             <MenuIcon onClick={() => setIsOpen(!isOpen)}>
                 <span />
@@ -18,12 +20,20 @@ const Navbar = () => {
                 <MenuLink href="/">Bebidas</MenuLink>
                 <MenuLink href="/">Kitss</MenuLink>
                 <MenuLink href="/">Copos e taças</MenuLink>
-            </Menu>
+                <MenuIcons>
+                <IconContext.Provider value={{ size: "2em" }}>
+                    <MenuLink href="/"><MdAccountCircle /></MenuLink>
+                    <MenuLink href="/"><MdShoppingCart /><CartProducts>2</CartProducts></MenuLink>
+                </IconContext.Provider>
+                </ MenuIcons>
+            </Menu>            
         </Nav>
     )
 }
 
 const Nav = styled.div`
+    background-color: white;
+    width: 80vw;
     height: 80px;
     padding: 0 2rem;
     display: flex;
@@ -31,6 +41,7 @@ const Nav = styled.div`
     align-items: center;
     flex-wrap: wrap;
     background: white;
+    font-family: 'Rubik', sans-serif;
 `;
 
 const MenuIcon = styled.div`
@@ -52,20 +63,21 @@ const MenuIcon = styled.div`
 `;
 
 const MenuLink = styled.a`
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     cursor: pointer;
     text-align: center;
     text-decoration: none; 
-    color: #67bc96;
+    color: black;
     transition: all 0.3s ease-in;
-    font-size: 0.9rem;
+    font-size: 1rem;
 
     &:hover {
-       color: #7b7fda;
+       color: gray;
     }
 `;
 
 const Menu = styled.div`
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,14 +94,16 @@ const Menu = styled.div`
 
 `;
 
-
-
 const Logo = styled.a`
     padding: 1rem 0;
     color: gray;
     text-decoration: none;
-    font-weight: 800;
+    font-weight: 600;
     font-size: 1.7rem;
+
+    img {
+        height: 50px;
+    }
     
     span {
         font-weight: 300;
@@ -97,6 +111,22 @@ const Logo = styled.a`
     }
 `;
 
+const MenuIcons = styled.div`
+    font-size: 2rem;
+    position: relative;
+    
+`
 
+const CartProducts = styled.div`
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    z-index: 1;
+    font-size: .8rem;
+    background-color: orange;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+`
 
 export default Navbar
