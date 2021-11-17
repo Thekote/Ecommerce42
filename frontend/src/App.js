@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import HeroBanner from './components/HeroBanner'
 import GlobalStyle from './global'
 import ProductList from './components/ProductList'
+import Footer from './components/Footer'
 
 const App = () => (
     
@@ -14,6 +15,7 @@ const App = () => (
         <ContentContainer>
           <ProductList/>
         </ContentContainer>
+        <Footer />
       </Container>
     
   )
