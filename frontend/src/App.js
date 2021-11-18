@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import HeroBanner from './components/HeroBanner';
 import GlobalStyle from './global';
 import ProductList from './components/ProductList';
-import AddProduct from './components/AddProduct';
+import { Outlet } from 'react-router-dom';
 
 const App = () => (
     
@@ -14,8 +14,8 @@ const App = () => (
         <HeroBanner />
         <ContentContainer>
           <ProductList/>
-          <AddProduct/>
         </ContentContainer>
+        <Outlet />
       </Container>
     
   )

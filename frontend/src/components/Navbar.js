@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { MdShoppingCart, MdAccountCircle } from "react-icons/md";
-import { Routes, Route, Link } from "react-router-dom";
-import AddProduct from './AddProduct';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -22,18 +21,13 @@ const Navbar = () => {
                 <MenuLink href="/">Kitss</MenuLink>
                 <MenuLink href="/">Copos e taças</MenuLink>
                 <MenuLink> 
-                    <Link to="/create">Adm</Link>
+                    <Link to="/product">Adm</Link>
                 </MenuLink>
                 <MenuIcons>
                     <MenuLink href="/"><MdAccountCircle /></MenuLink>
                     <MenuLink href="/"><MdShoppingCart /></MenuLink>
                 </ MenuIcons>
-            </Menu>
-            <div className="container mt-3">
-                <Routes>
-                    <Route exact path="/create" component={AddProduct}></Route>
-                </Routes>
-            </div>            
+            </Menu>         
         </Nav>
 
 

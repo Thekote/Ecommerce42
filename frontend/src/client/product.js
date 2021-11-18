@@ -10,7 +10,7 @@ class ProductDataService {
     };
 
     static create(data) {
-        return http.post("/products", data);
+        return http.post("/product", data);
     };
 
     static update(id, data) {
