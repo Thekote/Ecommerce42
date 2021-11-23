@@ -21,7 +21,7 @@ const Navbar = () => {
                 <MenuLink href="/">Kitss</MenuLink>
                 <MenuLink href="/">Copos e taças</MenuLink>
                 <MenuLink> 
-                    <Link to="/product">Adm</Link>
+                    <Link to="/product/new">Adm</Link>
                 </MenuLink>
                 <MenuIcons>
                     <MenuLink href="/"><MdAccountCircle /></MenuLink>

@@ -64,7 +64,7 @@ const AddProduct = () => {
                 <div>
                     <h4>Produto cadastrado com sucesso</h4>
                     <button className="btn btn-sucess" onClick={newProduct}>
-                        Add
+                        Cadastrar Novo Produto
                     </button>
                 </div>
             ) : (
