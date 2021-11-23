@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ProductCard = () => {
+const ProductCard = (props) => {
     return (
         <ProductContainer>
             <ProdImg>
@@ -9,19 +9,19 @@ const ProductCard = () => {
             </ProdImg>
             <ProdInfo>
                 <ProdName>
-                    Coqueteleira 500ml
+                    {props.title}
                 </ProdName>
                 <ProdDescription>
-                    Coqueteleira 500ml aço inox
+                    {props.description}
                 </ProdDescription>
                 <OldPrice> 
-                    R$ 75,00
+                    {props.oldPrice},80
                 </OldPrice>
                 <ProdPrice>
-                    R$ 58,00
+                    R${props.price},80
                 </ProdPrice>
                 <BtnAddCart>
-                    Adicionar ao carrinho
+                    Adicionar ao Carrinho
                 </BtnAddCart>
             </ProdInfo>
             

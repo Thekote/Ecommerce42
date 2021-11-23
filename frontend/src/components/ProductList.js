@@ -1,22 +1,43 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import ProductCard from './ProductCard';
-
+import axios from 'axios';
 
 const ProductList = () => {
+    
+    const [ products, setProducts] = useState([])
+
+    useEffect(
+        () => {
+            axios.get('http://localhost:5000/products')
+            .then(response => {
+                const dataProducts = response.data
+                setProducts(dataProducts)
+            });
+            
+        }, [])     
+   
     return (
+
         <MainContent>
+            
         <TitleList>Os mais vendidos</TitleList>
-        <ProductsContainer>   
-                        <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
+        <ProductsContainer>        
+            {products.map( 
+                product => <div key={product.id}>
+                <ProductCard 
+                title={product.title}
+                price={product.price}
+                oldPrice={product.oldPrice}
+                description={product.description}
+                imageUrl={product.imageUrl}
+                categoryId={product.categoryId}                
+                />
+                </div>                
+            )}  
+        
         </ProductsContainer>
         </MainContent> 
-
     )
 }
 

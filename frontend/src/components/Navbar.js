@@ -105,10 +105,7 @@ const Logo = styled.a`
         height: 50px;
     }
     
-    span {
-        font-weight: 300;
-        font-size: 1.3rem;
-    }
+
 `;
 
 const MenuIcons = styled.div`
