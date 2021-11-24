@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { MdShoppingCart, MdAccountCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { IconContext } from 'react-icons'
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +10,7 @@ const Navbar = () => {
     return (
         <Nav>
             <Logo href="">
-                LOGO
+                <img src="https://i.imgur.com/P6KEUmH.png" alt="Logo BarShop" />
             </Logo>
             <MenuIcon onClick={() => setIsOpen(!isOpen)}>
                 <span />
@@ -24,8 +25,10 @@ const Navbar = () => {
                     <Link to="/product/new">Adm</Link>
                 </MenuLink>
                 <MenuIcons>
+                <IconContext.Provider value={{ size: "2em" }}>
                     <MenuLink href="/"><MdAccountCircle /></MenuLink>
-                    <MenuLink href="/"><MdShoppingCart /></MenuLink>
+                    <MenuLink href="/"><MdShoppingCart /><CartProducts>2</CartProducts></MenuLink>
+                </IconContext.Provider>
                 </ MenuIcons>
             </Menu>         
         </Nav>
@@ -35,7 +38,7 @@ const Navbar = () => {
 }
 
 const Nav = styled.div`
-    background-color: gray;
+    background-color: white;
     width: 80vw;
     height: 80px;
     padding: 0 2rem;
@@ -103,6 +106,10 @@ const Logo = styled.a`
     text-decoration: none;
     font-weight: 600;
     font-size: 1.7rem;
+
+    img {
+        height: 50px;
+    }
     
     span {
         font-weight: 300;
@@ -112,7 +119,20 @@ const Logo = styled.a`
 
 const MenuIcons = styled.div`
     font-size: 2rem;
+    position: relative;
     
+`
+
+const CartProducts = styled.div`
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    z-index: 1;
+    font-size: .8rem;
+    background-color: orange;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
 `
 
 export default Navbar
