@@ -86,7 +86,7 @@ const BtnAddCart = styled.div`
     color: white;
     width: 100%; 
     height: 40px;
-    background-color: #F2B705; // ${props => `${props.backgroundColor}`};
+    background-color: #F2B705;
     border-radius: 5px;
     display: flex;
     justify-content: center;
