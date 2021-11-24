@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import ProductDataService from "../../client/product";
 import styled from "styled-components";
 
-const AddProduct = () => {
-    const initialProductState = {
-        title: "",
-        description: "",
-        price: "",
-        stock: "",
-        isActive: true,
-        categoryId: ""
 
-    };
+const initialProductState = {
+    title: "",
+    description: "",
+    price: "",
+    stock: "",
+    isActive: true,
+    categoryId: ""
+
+};
+const AddProduct = () => {
+    
     const [product, setProduct] = useState(initialProductState);
     const [submitted, setSubmitted] = useState(false);
 
@@ -22,31 +24,13 @@ const AddProduct = () => {
 
 
     const saveProduct = () => {
-        var data = {
-            title: product.title,
-            description: product.description,
-            price: product.price,
-            stock: product.stock,
-            isActive: product.isActive,
-            categoryId: product.categoryId
-        };
 
-        ProductDataService.create(data)
-            .then(response => {
-                setProduct({
-                    title: response.data.title,
-                    description: response.data.description,
-                    price: response.data.price,
-                    stock: response.data.stock,
-                    isActive: response.data.isActive,
-                    categoryId: response.data.categoryId
-                });
+        ProductDataService.create(product)
+            .then(() => {
+
                 setSubmitted(true);
-                console.log(response.data);
             })
-            .catch(err => {
-                console.log(err);
-            });
+
     };
 
     const newProduct = () => {
@@ -56,14 +40,14 @@ const AddProduct = () => {
 
     return (
     <Container>    
-    <Form>
+    <FormContainer>
         <div className="submit-form">
             <h2>Cadastrar Produtos</h2>
             <div className="line"></div>
             {submitted ? (
                 <div>
-                    <h4>Produto cadastrado com sucesso</h4>
-                    <button className="btn btn-sucess" onClick={newProduct}>
+                    <h3>Produto cadastrado com sucesso</h3>
+                    <button className="btn btn-success" onClick={newProduct}>
                         Cadastrar Novo Produto
                     </button>
                 </div>
@@ -135,7 +119,7 @@ const AddProduct = () => {
                         />
                     </div>
 
-                    <br/> <button onClick={saveProduct} className="btn btn-sucess">
+                    <br/> <button onClick={saveProduct} className="btn btn-success">
                         Cadastrar Produto    
                     </button>
                     <br/> <button onClick={saveProduct} className="btn btn-cancel">
@@ -145,7 +129,7 @@ const AddProduct = () => {
                 
             )}
         </div>
-    </Form>
+    </FormContainer>
     </Container>
     );
 };
@@ -155,7 +139,7 @@ const Container = styled.div `
     justify-content: center;
 
 `
-const Form = styled.div `
+const FormContainer = styled.div `
     display: flex;
     justify-content: center;
     width: 30vw;
