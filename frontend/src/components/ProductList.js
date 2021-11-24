@@ -9,7 +9,7 @@ const ProductList = () => {
 
     useEffect(
         () => {
-            axios.get('http://localhost:5000/products')
+            axios.get('https://my-json-server.typicode.com/menezesmario/fake_api_products/products')
             .then(response => {
                 const dataProducts = response.data
                 setProducts(dataProducts)

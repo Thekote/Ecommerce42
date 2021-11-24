@@ -42,7 +42,7 @@ This project is part of the Imersão42 provide by [CodeMiner42](https://www.code
 - Clone the project: `git clone https://github.com/Thekote/Ecommerce42`;
 - Install dependencies: `yarn install`;
 - Run development server: `yarn dev`;
-- Open http://localhost:8080 with your browser to see the result.
+- Open http://localhost:3000 with your browser to see the result.
 
 Then start coding!
 
