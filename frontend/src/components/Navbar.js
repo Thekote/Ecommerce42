@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { MdShoppingCart, MdAccountCircle } from "react-icons/md";
+import { Link } from "react-router-dom";
 import { IconContext } from 'react-icons'
-import { MdShoppingCart, MdAccountCircle } from "react-icons/md"
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,14 +21,19 @@ const Navbar = () => {
                 <MenuLink href="/">Bebidas</MenuLink>
                 <MenuLink href="/">Kitss</MenuLink>
                 <MenuLink href="/">Copos e taças</MenuLink>
+                <MenuLink> 
+                    <Link to="/product/new">Adm</Link>
+                </MenuLink>
                 <MenuIcons>
                 <IconContext.Provider value={{ size: "2em" }}>
                     <MenuLink href="/"><MdAccountCircle /></MenuLink>
                     <MenuLink href="/"><MdShoppingCart /><CartProducts>2</CartProducts></MenuLink>
                 </IconContext.Provider>
                 </ MenuIcons>
-            </Menu>            
+            </Menu>         
         </Nav>
+
+
     )
 }
 

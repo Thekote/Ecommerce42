@@ -1,11 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import App from './App';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AddProduct from "./components/pages/AddProduct";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const rootElement = document.getElementById("root");
+render(
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<App />} />
+        <Route path="product/new" element= {<AddProduct />} />
+
+      </Routes>
+      
+    </BrowserRouter>,
+    rootElement
+     
 );
 
