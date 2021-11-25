@@ -15,7 +15,6 @@ const initialProductState = {
 const AddProduct = () => {
     
     const [product, setProduct] = useState(initialProductState);
-    const [submitted, setSubmitted] = useState(false);
 
     const handleInputChange = event => {
         const { name, value } = event.target;
@@ -23,38 +22,31 @@ const AddProduct = () => {
     };
 
 
-    const saveProduct = () => {
+    const createProduct = (event) => {
+        event.preventDefault();
 
         ProductDataService.create(product)
             .then(() => {
 
-                setSubmitted(true);
+                alert("Produto cadastrado com sucesso!!!")
+                resetForm();
             })
 
     };
 
-    const newProduct = () => {
+    const resetForm = () => {
         setProduct(initialProductState);
-        setSubmitted(false);
     };
 
     return (
     <Container>    
-    <FormContainer>
-        <div className="submit-form">
+    <FormContainer onSubmit={createProduct} onReset={resetForm}>
+        <div>
             <h2>Cadastrar Produtos</h2>
             <div className="line"></div>
-            {submitted ? (
                 <div>
-                    <h3>Produto cadastrado com sucesso</h3>
-                    <button className="btn btn-success" onClick={newProduct}>
-                        Cadastrar Novo Produto
-                    </button>
-                </div>
-            ) : (
-                <div>
-                    <div className="form-group">
-                        <label htmlFor="title">Nome</label> <br/>
+                    <div>
+                        <label>Nome</label> <br/>
                         <input
                             type="text"
                             id="title"
@@ -66,8 +58,8 @@ const AddProduct = () => {
                         />
                     </div>
                 
-                    <div className="form-group">
-                        <label htmlFor="description">Descrição</label> <br/>
+                    <div>
+                        <label >Descrição</label> <br/>
                         <input
                             type="text"
                             id="description"
@@ -80,8 +72,8 @@ const AddProduct = () => {
                         />
                     </div>
 
-                    <div className="form-group">
-                        <label htmlFor="price">Preço</label> <br/>
+                    <div>
+                        <label >Preço</label> <br/>
                         <input
                             type="text"
                             id="price"
@@ -93,8 +85,8 @@ const AddProduct = () => {
                         />
                     </div>
 
-                    <div className="form-group">
-                        <label htmlFor="stock">Quantidade em Estoque</label> <br/>
+                    <div>
+                        <label >Quantidade em Estoque</label> <br/>
                         <input
                             type="text"
                             id="stock"
@@ -106,8 +98,8 @@ const AddProduct = () => {
                         />
                     </div>
 
-                    <div className="form-group">
-                        <label htmlFor="category">Categoria</label> <br/>
+                    <div>
+                        <label >Categoria</label> <br/>
                         <input
                             type="text"
                             id="category"
@@ -119,15 +111,14 @@ const AddProduct = () => {
                         />
                     </div>
 
-                    <br/> <button onClick={saveProduct} className="btn btn-success">
+                    <br/> <button type="submit" className="btn btn-success">
                         Cadastrar Produto    
                     </button>
-                    <br/> <button onClick={saveProduct} className="btn btn-cancel">
+                    <br/> <button type="reset" className="btn btn-cancel">
                         Cancelar    
                     </button>                            
             </div>
                 
-            )}
         </div>
     </FormContainer>
     </Container>
@@ -139,7 +130,7 @@ const Container = styled.div `
     justify-content: center;
 
 `
-const FormContainer = styled.div `
+const FormContainer = styled.form `
     display: flex;
     justify-content: center;
     width: 30vw;
