@@ -1,12 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import Navbar from './components/Navbar'
-import HeroBanner from './components/HeroBanner'
 import GlobalStyle from './styles/global'
 import ProductList from './components/ProductList'
-import Footer from './components/Footer';
+import { Outlet } from 'react-router-dom';
 import Slider from './components/BannerSlider/Slider';
-
+import Footer from './components/Footer'
 
 const App = () => (
 
@@ -15,10 +14,10 @@ const App = () => (
         <GlobalStyle />
         <Navbar />
         <Slider />
-        {/* <HeroBanner /> */}
         <ContentContainer>
           <ProductList/>
         </ContentContainer>
+        <Outlet />
         <Footer />
       </Container>
     

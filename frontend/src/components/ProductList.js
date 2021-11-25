@@ -32,7 +32,7 @@ const ProductList = () => {
                 description={product.description}
                 imageUrl={product.imageUrl}
                 categoryId={product.categoryId}                
-                />&#10095
+                />
                 </div>                
             )}  
         
