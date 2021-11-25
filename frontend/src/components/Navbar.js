@@ -9,7 +9,7 @@ const Navbar = () => {
     return (
         <Nav>
             <Logo href="">
-                <img src="https://i.imgur.com/P6KEUmH.png" alt="Logo BarShop" />
+                <img src="https://i.imgur.com/zMwvLLU.png" alt="Logo BarShop" />
             </Logo>
             <MenuIcon onClick={() => setIsOpen(!isOpen)}>
                 <span />
