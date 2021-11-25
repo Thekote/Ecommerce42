@@ -22,12 +22,13 @@ const AddProduct = () => {
     };
 
 
-    const saveProduct = () => {
+    const createProduct = (event) => {
+        event.preventDefault();
 
         ProductDataService.create(product)
             .then(() => {
 
-                alert("Produdo cadastrado com sucesso!!!")
+                alert("Produto cadastrado com sucesso!!!")
             })
 
     };
@@ -38,7 +39,7 @@ const AddProduct = () => {
 
     return (
     <Container>    
-    <FormContainer onSubmit={saveProduct} onReset={resetForm}>
+    <FormContainer onSubmit={createProduct} onReset={resetForm}>
         <div>
             <h2>Cadastrar Produtos</h2>
             <div className="line"></div>
