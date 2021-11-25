@@ -29,6 +29,7 @@ const AddProduct = () => {
             .then(() => {
 
                 alert("Produto cadastrado com sucesso!!!")
+                resetForm();
             })
 
     };
