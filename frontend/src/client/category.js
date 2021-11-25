@@ -10,7 +10,7 @@ class CategoryDataService {
     };
 
     static create(data) {
-        return http.post("/categories", data);
+        return http.post("/category/", data);
     };
 
     static update(id, data) {

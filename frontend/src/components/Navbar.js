@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { MdShoppingCart, MdAccountCircle } from "react-icons/md";
-import { Link } from "react-router-dom";
 import { IconContext } from 'react-icons'
 
 const Navbar = () => {
@@ -21,9 +20,7 @@ const Navbar = () => {
                 <MenuLink href="/">Bebidas</MenuLink>
                 <MenuLink href="/">Kitss</MenuLink>
                 <MenuLink href="/">Copos e taças</MenuLink>
-                <MenuLink> 
-                    <Link to="/product/new">Adm</Link>
-                </MenuLink>
+                <MenuLink href="/product/new">Adm</MenuLink>
                 <MenuIcons>
                 <IconContext.Provider value={{ size: "2em" }}>
                     <MenuLink href="/"><MdAccountCircle /></MenuLink>
