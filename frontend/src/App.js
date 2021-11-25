@@ -4,7 +4,9 @@ import Navbar from './components/Navbar'
 import HeroBanner from './components/HeroBanner'
 import GlobalStyle from './styles/global'
 import ProductList from './components/ProductList'
-import Footer from './components/Footer'
+import Footer from './components/Footer';
+import Slider from './components/BannerSlider/Slider';
+
 
 const App = () => (
 
@@ -12,7 +14,8 @@ const App = () => (
       <Container>
         <GlobalStyle />
         <Navbar />
-        <HeroBanner />
+        <Slider />
+        {/* <HeroBanner /> */}
         <ContentContainer>
           <ProductList/>
         </ContentContainer>

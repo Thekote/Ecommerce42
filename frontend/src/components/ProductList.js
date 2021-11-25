@@ -21,7 +21,7 @@ const ProductList = () => {
 
         <MainContent>
             
-        <TitleList>Os mais vendidos</TitleList>
+        <TitleList>Os mais vendidos </TitleList>
         <ProductsContainer>        
             {products.map( 
                 product => <div key={product.id}>
@@ -32,7 +32,7 @@ const ProductList = () => {
                 description={product.description}
                 imageUrl={product.imageUrl}
                 categoryId={product.categoryId}                
-                />
+                />&#10095
                 </div>                
             )}  
         
