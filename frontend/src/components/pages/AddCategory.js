@@ -1,110 +1,71 @@
 import React, { useState } from "react";
-import ProductDataService from "../../client/product";
+import CategoryDataService from "../../client/category";
 import styled from "styled-components";
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
-
-const initialProductState = {
-    title: "",
+const initialCategoryState = {
     description: "",
-    price: "",
-    stock: "",
+    cod: "",
     isActive: true,
-    categoryId: ""
 };
 
-const AddProduct = () => {
-    const [product, setProduct] = useState(initialProductState);
+const AddCategory = () => {
+    const [category, setCategory] = useState(initialCategoryState);
 
     const handleInputChange = event => {
         const { name, value } = event.target;
-        setProduct({...product, [name]: value});
+        setCategory({...category, [name]: value});
     };
 
-    const createProduct = (event) => {
+    const createCategory = (event) => {
         event.preventDefault();
 
-        ProductDataService.create(product)
+        CategoryDataService.create(category)
             .then(() => {
-                toast.success("Produto cadastrado com sucesso!!");
+                toast.success("Categoria criada com sucesso!!");                
                 resetForm();
-            })
+            });
 
     };
 
     const resetForm = () => {
-        setProduct(initialProductState);
+        setCategory(initialCategoryState);
     };
 
     return (
     <Container>    
-    <FormContainer onSubmit={createProduct} onReset={resetForm}>
+    <FormContainer onSubmit={createCategory} onReset={resetForm}>
         <div>
-            <h2>Cadastrar Produtos</h2>
+            <h2>Cadastrar Categorias de Produtos</h2>
             <div className="line"></div>
                 <div>
                     <div>
-                        <label>Nome</label> <br/>
-                        <input
-                            type="text"
-                            id="title"
-                            required
-                            value={product.title}
-                            onChange={handleInputChange}
-                            name="title"
-                            placeholder="Coqueteleira"
-                        />
-                    </div>                
-                    <div>
-                        <label >Descrição</label> <br/>
+                        <label>Descrição</label> <br/>
                         <input
                             type="text"
                             id="description"
                             required
-                            value={product.description}
+                            value={category.description}
                             onChange={handleInputChange}
                             name="description"
-                            placeholder="Ex: Coqueteleira 500ml de aço inox"
+                            placeholder="Ex: Utensílios"
                         />
-                    </div>
+                    </div>                
                     <div>
-                        <label >Preço</label> <br/>
+                        <label >Código da Categoria</label> <br/>
                         <input
                             type="text"
-                            id="price"
+                            id="cod"
                             required
-                            value={product.price}
+                            value={category.cod}
                             onChange={handleInputChange}
-                            name="price"
-                            placeholder="Ex: 99,99"
-                        />
-                    </div>
-                    <div>
-                        <label >Quantidade em Estoque</label> <br/>
-                        <input
-                            type="text"
-                            id="stock"
-                            required
-                            value={product.stock}
-                            onChange={handleInputChange}
-                            name="stock"
-                            placeholder="Ex: 50"
-                        />
-                    </div>
-                    <div>
-                        <label >Categoria</label> <br/>
-                        <input
-                            type="text"
-                            id="category"
-                            required
-                            value={product.categoryId}
-                            onChange={handleInputChange}
-                            name="categoryId"
-                            placeholder="Ex: 2"
+                            name="cod"
+                            placeholder="Ex: UTN"
                         />
                     </div>
                     <br/> <button type="submit" className="btn btn-success">
-                        Cadastrar Produto    
+                        Cadastrar Categoria    
                     </button>
                     <br/> <button type="reset" className="btn btn-cancel">
                         Cancelar    
@@ -188,4 +149,4 @@ const FormContainer = styled.form `
 `
 
 
-export default AddProduct;
+export default AddCategory;
