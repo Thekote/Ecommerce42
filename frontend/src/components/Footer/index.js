@@ -8,6 +8,7 @@ const Footer = () => {
     <div
       style={{
         display: "flex",
+        marginTop: "5rem",
         justifyContent: "center",
         backgroundColor: "lightgray",
         width: "100%",

@@ -48,6 +48,7 @@ const Nav = styled.div`
   flex-wrap: wrap;
   background: white;
   font-family: "Rubik", sans-serif;
+  margin-bottom: 5rem;
 `
 
 const MenuIcon = styled.div`

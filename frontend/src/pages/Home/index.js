@@ -1,18 +1,14 @@
 import React from "react"
 import styled from "styled-components"
-import Navbar from "../../components/Navbar"
 import HeroBanner from "../../components/Banner"
 import ProductList from "../../components/ProductList"
-import Footer from "../../components/Footer"
 
 const HomePage = () => (
   <Container>
-    <Navbar />
     <HeroBanner />
     <ContentContainer>
       <ProductList />
     </ContentContainer>
-    <Footer />
   </Container>
 )
 

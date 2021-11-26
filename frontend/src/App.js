@@ -4,16 +4,22 @@ import AddCategory from "./pages/AddCategory"
 import { Slide, ToastContainer } from "react-toastify"
 import HomePage from "./pages/Home"
 import GlobalStyle from "./global"
+import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
+
 
 import "react-toastify/dist/ReactToastify.css"
 
 const App = () => (
   <BrowserRouter>
+    <Navbar />
+
     <Routes>
       <Route exact path="/" element={<HomePage />} />
       <Route path="product/new" element={<AddProduct />} />
       <Route path="category/new" element={<AddCategory />} />
     </Routes>
+    <Footer />
     <GlobalStyle />
 
     <ToastContainer
