@@ -1,16 +1,16 @@
 import { render } from "react-dom"
-import App from "./App"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import AddProduct from "./pages/AddProduct"
 import AddCategory from "./pages/AddCategory"
 import { Slide, ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import HomePage from "./pages/Home"
 
 const rootElement = document.getElementById("root")
 render(
   <BrowserRouter>
     <Routes>
-      <Route exact path="/" element={<App />} />
+      <Route exact path="/" element={<HomePage />} />
       <Route path="product/new" element={<AddProduct />} />
       <Route path="category/new" element={<AddCategory />} />
     </Routes>
