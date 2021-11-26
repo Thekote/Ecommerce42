@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ProductDataService from "../../client/product";
 import styled from "styled-components";
+import { toast } from "react-toastify";
 
 
 const initialProductState = {
@@ -10,10 +11,9 @@ const initialProductState = {
     stock: "",
     isActive: true,
     categoryId: ""
-
 };
+
 const AddProduct = () => {
-    
     const [product, setProduct] = useState(initialProductState);
 
     const handleInputChange = event => {
@@ -21,14 +21,12 @@ const AddProduct = () => {
         setProduct({...product, [name]: value});
     };
 
-
     const createProduct = (event) => {
         event.preventDefault();
 
         ProductDataService.create(product)
             .then(() => {
-
-                alert("Produto cadastrado com sucesso!!!")
+                toast.success("Produto cadastrado com sucesso!!");
                 resetForm();
             })
 
@@ -56,8 +54,7 @@ const AddProduct = () => {
                             name="title"
                             placeholder="Coqueteleira"
                         />
-                    </div>
-                
+                    </div>                
                     <div>
                         <label >Descrição</label> <br/>
                         <input
@@ -68,10 +65,8 @@ const AddProduct = () => {
                             onChange={handleInputChange}
                             name="description"
                             placeholder="Ex: Coqueteleira 500ml de aço inox"
-
                         />
                     </div>
-
                     <div>
                         <label >Preço</label> <br/>
                         <input
@@ -84,7 +79,6 @@ const AddProduct = () => {
                             placeholder="Ex: 99,99"
                         />
                     </div>
-
                     <div>
                         <label >Quantidade em Estoque</label> <br/>
                         <input
@@ -97,7 +91,6 @@ const AddProduct = () => {
                             placeholder="Ex: 50"
                         />
                     </div>
-
                     <div>
                         <label >Categoria</label> <br/>
                         <input
@@ -110,15 +103,13 @@ const AddProduct = () => {
                             placeholder="Ex: 2"
                         />
                     </div>
-
                     <br/> <button type="submit" className="btn btn-success">
                         Cadastrar Produto    
                     </button>
                     <br/> <button type="reset" className="btn btn-cancel">
                         Cancelar    
                     </button>                            
-            </div>
-                
+            </div>                
         </div>
     </FormContainer>
     </Container>
@@ -143,7 +134,6 @@ const FormContainer = styled.form `
     box-sizing: border-box;
 }
 
-
     input { 
         height: 40px;
         width: 400px;
@@ -152,15 +142,11 @@ const FormContainer = styled.form `
         border: 1px solid black;
         border-radius: 5px;
         padding-left: 10px;
-        
-        
-
     }
 
     h2 {
         margin-top: 0px;
         margin-bottom: 5px;
-
     }
 
     .line {
@@ -168,7 +154,6 @@ const FormContainer = styled.form `
         height: 1px;
         background-color: gray;
         margin-bottom: 30px;
-
     }
 
     button  {
@@ -183,8 +168,7 @@ const FormContainer = styled.form `
         font-size: 1rem;
         border: 0;
         cursor: pointer;
-        transition: background-color 0.5s;
-        
+        transition: background-color 0.5s;   
     }
 
     button:hover {

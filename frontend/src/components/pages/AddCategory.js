@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import CategoryDataService from "../../client/category";
 import styled from "styled-components";
-import {ToastContainer, toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 const initialCategoryState = {
     description: "",
     cod: "",
     isActive: true,
-
-
 };
+
 const AddCategory = () => {
-    
     const [category, setCategory] = useState(initialCategoryState);
 
     const handleInputChange = event => {
@@ -20,22 +18,12 @@ const AddCategory = () => {
         setCategory({...category, [name]: value});
     };
 
-
     const createCategory = (event) => {
         event.preventDefault();
 
         CategoryDataService.create(category)
             .then(() => {
-                toast.success("Categoria criada com sucesso!!", {
-                        position: "top-center",
-                        autoClose: 5000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        });
-                
+                toast.success("Categoria criada com sucesso!!");                
                 resetForm();
             });
 
@@ -63,8 +51,7 @@ const AddCategory = () => {
                             name="description"
                             placeholder="Ex: Utensílios"
                         />
-                    </div>
-                
+                    </div>                
                     <div>
                         <label >Código da Categoria</label> <br/>
                         <input
@@ -75,7 +62,6 @@ const AddCategory = () => {
                             onChange={handleInputChange}
                             name="cod"
                             placeholder="Ex: UTN"
-
                         />
                     </div>
                     <br/> <button type="submit" className="btn btn-success">
@@ -84,11 +70,9 @@ const AddCategory = () => {
                     <br/> <button type="reset" className="btn btn-cancel">
                         Cancelar    
                     </button>                            
-            </div>
-                
+            </div>                
         </div>
     </FormContainer>
-    <ToastContainer/>
     </Container>
     );
 };
@@ -111,7 +95,6 @@ const FormContainer = styled.form `
     box-sizing: border-box;
 }
 
-
     input { 
         height: 40px;
         width: 400px;
@@ -120,15 +103,11 @@ const FormContainer = styled.form `
         border: 1px solid black;
         border-radius: 5px;
         padding-left: 10px;
-        
-        
-
     }
 
     h2 {
         margin-top: 0px;
         margin-bottom: 5px;
-
     }
 
     .line {
@@ -136,7 +115,6 @@ const FormContainer = styled.form `
         height: 1px;
         background-color: gray;
         margin-bottom: 30px;
-
     }
 
     button  {
@@ -151,8 +129,7 @@ const FormContainer = styled.form `
         font-size: 1rem;
         border: 0;
         cursor: pointer;
-        transition: background-color 0.5s;
-        
+        transition: background-color 0.5s;   
     }
 
     button:hover {
