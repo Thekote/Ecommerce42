@@ -1,23 +1,21 @@
-import http from "../http-common.js";
+import http from "../http-common.js"
 
 class ProductDataService {
-    static getAll() {
-        return http.get("/products");
-    };
+  static getAll() {
+    return http.get("/products")
+  }
 
-    static get(id) {
-        return http.get(`/products/${ id }`);
-    };
+  static get(id) {
+    return http.get(`/products/${id}`)
+  }
 
-    static create(data) {
-        return http.post("/product", data);
-    };
+  static create(data) {
+    return http.post("/product", data)
+  }
 
-    static update(id, data) {
-        return http.put(`/products/${ id }`, data);
-    };
-
-
+  static update(id, data) {
+    return http.put(`/products/${id}`, data)
+  }
 }
 
-export default ProductDataService;
+export default ProductDataService

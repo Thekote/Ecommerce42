@@ -1,27 +1,24 @@
-import React from 'react';
-import styled from 'styled-components';
-import Navbar from './components/Navbar';
-import HeroBanner from './components/HeroBanner';
-import GlobalStyle from './global';
-import ProductList from './components/ProductList';
-import { Outlet } from 'react-router-dom';
-import Footer from './components/Footer'
+import React from "react"
+import styled from "styled-components"
+import Navbar from "./components/Navbar"
+import HeroBanner from "./components/HeroBanner"
+import GlobalStyle from "./global"
+import ProductList from "./components/ProductList"
+import { Outlet } from "react-router-dom"
+import Footer from "./components/Footer"
 
 const App = () => (
-    
-      <Container>
-        <GlobalStyle />
-        <Navbar />
-        <HeroBanner />
-        <ContentContainer>
-          <ProductList/>
-        </ContentContainer>
-        <Outlet />
-        <Footer />
-      </Container>
-    
-  )
-
+  <Container>
+    <GlobalStyle />
+    <Navbar />
+    <HeroBanner />
+    <ContentContainer>
+      <ProductList />
+    </ContentContainer>
+    <Outlet />
+    <Footer />
+  </Container>
+)
 
 const Container = styled.div`
   background: white;
@@ -36,4 +33,3 @@ const ContentContainer = styled.div`
 `
 
 export default App
-
