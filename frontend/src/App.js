@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Navbar from "./components/Navbar"
-import HeroBanner from "./components/HeroBanner"
+import HeroBanner from "./components/Banner"
 import GlobalStyle from "./global"
 import ProductList from "./components/ProductList"
 import { Outlet } from "react-router-dom"
