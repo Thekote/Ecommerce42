@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import CategoryDataService from "../../client/category"
 import styled from "styled-components"
 import { toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
 
 const initialCategoryState = {
   description: "",

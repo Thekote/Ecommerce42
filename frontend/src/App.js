@@ -1,35 +1,38 @@
-import React from "react"
-import styled from "styled-components"
-import Navbar from "./components/Navbar"
-import HeroBanner from "./components/HeroBanner"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import AddProduct from "./pages/AddProduct"
+import AddCategory from "./pages/AddCategory"
+import { Slide, ToastContainer } from "react-toastify"
+import HomePage from "./pages/Home"
 import GlobalStyle from "./global"
-import ProductList from "./components/ProductList"
-import { Outlet } from "react-router-dom"
+import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 
+
+import "react-toastify/dist/ReactToastify.css"
+
 const App = () => (
-  <Container>
-    <GlobalStyle />
+  <BrowserRouter>
     <Navbar />
-    <HeroBanner />
-    <ContentContainer>
-      <ProductList />
-    </ContentContainer>
-    <Outlet />
+
+    <Routes>
+      <Route exact path="/" element={<HomePage />} />
+      <Route path="product/new" element={<AddProduct />} />
+      <Route path="category/new" element={<AddCategory />} />
+    </Routes>
     <Footer />
-  </Container>
+    <GlobalStyle />
+
+    <ToastContainer
+      theme="colored"
+      position="top-center"
+      autoClose={5000}
+      transition={Slide}
+      hideProgressBar
+      closeOnClick
+      pauseOnHover
+      draggable
+    />
+  </BrowserRouter>
 )
-
-const Container = styled.div`
-  background: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const ContentContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-`
 
 export default App
