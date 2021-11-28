@@ -106,7 +106,7 @@ const AddProduct = () => {
             </button>
             <br />{" "}
             <button type="reset" className="btn btn-cancel">
-              Cancelar
+              Recomeçar
             </button>
           </div>
         </div>
@@ -178,11 +178,11 @@ const FormContainer = styled.form`
   }
 
   .btn-cancel {
-    background-color: #ff4040;
+    background-color: #F9AF39;
   }
 
   .btn-cancel:hover {
-    background-color: #b22222;
+    background-color: #fe7839;
   }
 `
 
