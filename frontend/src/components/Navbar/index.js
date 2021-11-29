@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <Nav>
-      <Logo href="">
+      <Logo to="/">
         <img src="https://i.imgur.com/P6KEUmH.png" alt="Logo BarShop" />
       </Logo>
       <MenuIcon onClick={() => setIsOpen(!isOpen)}>
@@ -101,7 +101,7 @@ const Menu = styled.div`
   }
 `
 
-const Logo = styled.a`
+const Logo = styled(Link)`
   padding: 1rem 0;
   color: gray;
   text-decoration: none;
