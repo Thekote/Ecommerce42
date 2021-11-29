@@ -67,19 +67,19 @@ const AddProduct = () => {
             <div>
               <label>Preço</label> <br />
               <input
-                type="text"
+                type="number"
                 id="price"
                 required
                 value={product.price}
                 onChange={handleInputChange}
                 name="price"
-                placeholder="Ex: 99,99"
+                placeholder="Ex: 99.99"
               />
             </div>
             <div>
               <label>Quantidade em Estoque</label> <br />
               <input
-                type="text"
+                type="number"
                 id="stock"
                 required
                 value={product.stock}
@@ -91,7 +91,7 @@ const AddProduct = () => {
             <div>
               <label>Categoria</label> <br />
               <input
-                type="text"
+                type="number"
                 id="category"
                 required
                 value={product.categoryId}
