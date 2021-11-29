@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import { MdShoppingCart, MdAccountCircle } from "react-icons/md"
 import { IconContext } from "react-icons"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -17,16 +18,17 @@ const Navbar = () => {
         <span />
       </MenuIcon>
       <Menu isOpen={isOpen}>
-        <MenuLink href="/">Bebidas</MenuLink>
-        <MenuLink href="/">Kitss</MenuLink>
-        <MenuLink href="/">Copos e taças</MenuLink>
-        <MenuLink href="/product/new">Adm</MenuLink>
+        <MenuLink to="/">Bebidas</MenuLink>
+        <MenuLink to="/">Kits</MenuLink>
+        <MenuLink to="/">Copos e taças</MenuLink>
+        <MenuLink to="/">Utensílios</MenuLink>
+        <MenuLink to="/product/new">Adm</MenuLink>
         <MenuIcons>
           <IconContext.Provider value={{ size: "2em" }}>
-            <MenuLink href="/">
+            <MenuLink to="/">
               <MdAccountCircle />
             </MenuLink>
-            <MenuLink href="/">
+            <MenuLink to="/">
               <MdShoppingCart />
               <CartProducts>2</CartProducts>
             </MenuLink>
@@ -69,7 +71,7 @@ const MenuIcon = styled.div`
   }
 `
 
-const MenuLink = styled.a`
+const MenuLink = styled(Link)`
   padding: 1rem 1rem;
   cursor: pointer;
   text-align: center;
