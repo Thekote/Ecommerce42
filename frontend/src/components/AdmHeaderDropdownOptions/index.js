@@ -21,13 +21,15 @@ const AdmHeaderDropdownOptions = () => (
 )
 
 const MenuLink = styled(Link)`
-  padding: 1rem 1rem;
+  padding: 10px 15px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   color: black;
   transition: all 0.3s ease-in;
   font-size: 1rem;
+  display:block;
+
 
   &:hover {
     color: gray;
@@ -52,7 +54,6 @@ const DropdownMenuContent = styled(DropdownMenu.Content)`
   box-shadow: 0 0 20px 0 rgba(0 0 0 / 0.1);
 `
 const DropdownMenuItem = styled(DropdownMenu.Item)`
-  padding: 10px 15px;
   margin-top: 5px;
   margin-bottom: 5px;
 
