@@ -2,31 +2,20 @@ import React from "react"
 import styled from "styled-components"
 
 const ProductCard = (props) => {
-    return (
-        <ProductContainer>
-            <ProdImg>
-                <img src="https://i.imgur.com/Td5qbSq.png" alt= "Coqueteira" />
-            </ProdImg>
-            <ProdInfo>
-                <ProdName>
-                    {props.title}
-                </ProdName>
-                <ProdDescription>
-                    {props.description}
-                </ProdDescription>
-                <OldPrice>
-                    {props.oldPrice},80
-                </OldPrice>
-                <ProdPrice>
-                    R${props.price},80
-                </ProdPrice>
-                <BtnAddCart>
-                    Adicionar ao Carrinho
-                </BtnAddCart>
-            </ProdInfo>
-
-        </ProductContainer>
-    )
+  return (
+    <ProductContainer>
+      <ProdImg>
+        <img src="https://i.imgur.com/Td5qbSq.png" alt="Coqueteira" />
+      </ProdImg>
+      <ProdInfo>
+        <ProdName>{props.title}</ProdName>
+        <ProdDescription>{props.description}</ProdDescription>
+        <OldPrice>{props.oldPrice},80</OldPrice>
+        <ProdPrice>R${props.price},80</ProdPrice>
+        <BtnAddCart>Adicionar ao Carrinho</BtnAddCart>
+      </ProdInfo>
+    </ProductContainer>
+  )
 }
 
 const ProductContainer = styled.div`
@@ -80,25 +69,14 @@ const ProdPrice = styled.div`
 `
 
 const BtnAddCart = styled.div`
-<<<<<<< HEAD
-    color: white;
-    width: 100%;
-    height: 40px;
-    background-color: #F2B705;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-=======
   color: white;
   width: 100%;
   height: 40px;
-  background-color: #f2b705; // ${(props) => `${props.backgroundColor}`};
+  background-color: #f2b705;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
->>>>>>> main
 `
 
 export default ProductCard

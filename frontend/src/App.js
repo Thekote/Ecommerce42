@@ -3,10 +3,9 @@ import AddProduct from "./pages/AddProduct"
 import AddCategory from "./pages/AddCategory"
 import { Slide, ToastContainer } from "react-toastify"
 import HomePage from "./pages/Home"
-import GlobalStyle from "./global"
+import GlobalStyle from "./styles/global"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
-
 
 import "react-toastify/dist/ReactToastify.css"
 

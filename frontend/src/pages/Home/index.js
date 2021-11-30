@@ -1,11 +1,11 @@
 import React from "react"
 import styled from "styled-components"
-import HeroBanner from "../../components/Banner"
+import Slider from "../../components/BannerSlider/Slider"
 import ProductList from "../../components/ProductList"
 
 const HomePage = () => (
   <Container>
-    <HeroBanner />
+    <Slider />
     <ContentContainer>
       <ProductList />
     </ContentContainer>
