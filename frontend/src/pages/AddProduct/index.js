@@ -178,7 +178,7 @@ const FormContainer = styled.form`
   }
 
   .btn-cancel {
-    background-color: #F9AF39;
+    background-color: #f9af39;
   }
 
   .btn-cancel:hover {

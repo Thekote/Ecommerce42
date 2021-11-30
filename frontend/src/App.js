@@ -7,7 +7,6 @@ import GlobalStyle from "./global"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 
-
 import "react-toastify/dist/ReactToastify.css"
 
 const App = () => (
