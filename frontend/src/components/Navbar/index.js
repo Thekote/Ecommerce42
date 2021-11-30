@@ -1,14 +1,16 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import { MdShoppingCart, MdAccountCircle } from "react-icons/md"
+import { MdShoppingCart } from "react-icons/md"
 import { IconContext } from "react-icons"
+import { Link } from "react-router-dom"
+import AdmHeaderDropdownOptions from "../AdmHeaderDropdownOptions"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <Nav>
-      <Logo href="">
+      <Logo to="/">
         <img src="https://i.imgur.com/P6KEUmH.png" alt="Logo BarShop" />
       </Logo>
       <MenuIcon onClick={() => setIsOpen(!isOpen)}>
@@ -17,16 +19,14 @@ const Navbar = () => {
         <span />
       </MenuIcon>
       <Menu isOpen={isOpen}>
-        <MenuLink href="/">Bebidas</MenuLink>
-        <MenuLink href="/">Kitss</MenuLink>
-        <MenuLink href="/">Copos e taças</MenuLink>
-        <MenuLink href="/product/new">Adm</MenuLink>
+        <MenuLink to="/">Bebidas</MenuLink>
+        <MenuLink to="/">Kits</MenuLink>
+        <MenuLink to="/">Copos e taças</MenuLink>
+        <MenuLink to="/">Utensílios</MenuLink>
         <MenuIcons>
           <IconContext.Provider value={{ size: "2em" }}>
-            <MenuLink href="/">
-              <MdAccountCircle />
-            </MenuLink>
-            <MenuLink href="/">
+            <AdmHeaderDropdownOptions />
+            <MenuLink to="/">
               <MdShoppingCart />
               <CartProducts>2</CartProducts>
             </MenuLink>
@@ -69,7 +69,7 @@ const MenuIcon = styled.div`
   }
 `
 
-const MenuLink = styled.a`
+const MenuLink = styled(Link)`
   padding: 1rem 1rem;
   cursor: pointer;
   text-align: center;
@@ -99,7 +99,7 @@ const Menu = styled.div`
   }
 `
 
-const Logo = styled.a`
+const Logo = styled(Link)`
   padding: 1rem 0;
   color: gray;
   text-decoration: none;
