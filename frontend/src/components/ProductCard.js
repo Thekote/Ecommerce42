@@ -1,18 +1,18 @@
 import React from "react"
 import styled from "styled-components"
 
-const ProductCard = () => {
+const ProductCard = (props) => {
   return (
     <ProductContainer>
       <ProdImg>
         <img src="https://i.imgur.com/Td5qbSq.png" alt="Coqueteira" />
       </ProdImg>
       <ProdInfo>
-        <ProdName>Coqueteleira 500ml</ProdName>
-        <ProdDescription>Coqueteleira 500ml aço inox</ProdDescription>
-        <OldPrice>R$ 75,00</OldPrice>
-        <ProdPrice>R$ 58,00</ProdPrice>
-        <BtnAddCart>Adicionar ao carrinho</BtnAddCart>
+        <ProdName>{props.title}</ProdName>
+        <ProdDescription>{props.description}</ProdDescription>
+        <OldPrice>{props.oldPrice},80</OldPrice>
+        <ProdPrice>R${props.price},80</ProdPrice>
+        <BtnAddCart>Adicionar ao Carrinho</BtnAddCart>
       </ProdInfo>
     </ProductContainer>
   )
@@ -72,7 +72,7 @@ const BtnAddCart = styled.div`
   color: white;
   width: 100%;
   height: 40px;
-  background-color: #f2b705; // ${(props) => `${props.backgroundColor}`};
+  background-color: #f2b705;
   border-radius: 5px;
   display: flex;
   justify-content: center;
