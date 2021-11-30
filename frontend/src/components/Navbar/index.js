@@ -1,11 +1,9 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import { MdShoppingCart, MdAccountCircle } from "react-icons/md"
+import { MdShoppingCart } from "react-icons/md"
 import { IconContext } from "react-icons"
 import { Link } from "react-router-dom"
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
-
-import "./styles.css"
+import AdmHeaderDropdownOptions from "../AdmHeaderDropdownOptions"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -27,23 +25,7 @@ const Navbar = () => {
         <MenuLink to="/">Utensílios</MenuLink>
         <MenuIcons>
           <IconContext.Provider value={{ size: "2em" }}>
-            <DropdownMenu.Root>
-              <DropdownMenu.Trigger>
-                <MdAccountCircle />
-              </DropdownMenu.Trigger>
-              <DropdownMenu.Content
-                className="dropdown-menu-content"
-                sideOffset={5}
-              >
-                <DropdownMenu.Item className="dropdown-menu-item">
-                  <MenuLink to="/product/new">Cadastrar Produtos</MenuLink>
-                </DropdownMenu.Item>
-                <DropdownMenu.Item className="dropdown-menu-item">
-                  <MenuLink to="/category/new">Cadastrar Categorias</MenuLink>
-                </DropdownMenu.Item>
-                <DropdownMenu.Arrow />
-              </DropdownMenu.Content>
-            </DropdownMenu.Root>
+            <AdmHeaderDropdownOptions />
             <MenuLink to="/">
               <MdShoppingCart />
               <CartProducts>2</CartProducts>
