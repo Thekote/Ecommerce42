@@ -5,7 +5,7 @@ import { IconContext } from "react-icons"
 import { Link } from "react-router-dom"
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
 
-import "../Navbar/dropdown.css"
+import "./styles.css"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -31,11 +31,14 @@ const Navbar = () => {
               <DropdownMenu.Trigger>
                 <MdAccountCircle />
               </DropdownMenu.Trigger>
-              <DropdownMenu.Content sideOffset={5}>
-                <DropdownMenu.Item className="item">
+              <DropdownMenu.Content
+                className="dropdown-menu-content"
+                sideOffset={5}
+              >
+                <DropdownMenu.Item className="dropdown-menu-item">
                   <MenuLink to="/product/new">Cadastrar Produtos</MenuLink>
                 </DropdownMenu.Item>
-                <DropdownMenu.Item className="item">
+                <DropdownMenu.Item className="dropdown-menu-item">
                   <MenuLink to="/category/new">Cadastrar Categorias</MenuLink>
                 </DropdownMenu.Item>
                 <DropdownMenu.Arrow />
