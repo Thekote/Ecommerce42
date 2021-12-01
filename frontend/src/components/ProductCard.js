@@ -1,17 +1,17 @@
 import React from "react"
 import styled from "styled-components"
 
-const ProductCard = (props) => {
+const ProductCard = ({title, description, oldPrice, price}) => {
   return (
     <ProductContainer>
       <ProdImg>
-        <img src="https://i.imgur.com/Td5qbSq.png" alt="Coqueteira" />
+        <img src="https://i.imgur.com/Td5qbSq.png" alt={title} />
       </ProdImg>
       <ProdInfo>
-        <ProdName>{props.title}</ProdName>
-        <ProdDescription>{props.description}</ProdDescription>
-        <OldPrice>{props.oldPrice},80</OldPrice>
-        <ProdPrice>R${props.price},80</ProdPrice>
+        <ProdName>{title}</ProdName>
+        <ProdDescription>{description}</ProdDescription>
+        <OldPrice>{oldPrice}</OldPrice>
+        <ProdPrice>R${price}</ProdPrice>
         <BtnAddCart>Adicionar ao Carrinho</BtnAddCart>
       </ProdInfo>
     </ProductContainer>
