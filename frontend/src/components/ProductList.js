@@ -43,6 +43,7 @@ const MainContent = styled.div`
 `
 
 const ProductsContainer = styled.ul`
+  list-style: none;
   background-color: #fff8;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
