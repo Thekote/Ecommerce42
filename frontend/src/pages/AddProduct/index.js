@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 import ProductDataService from "../../client/product"
 import styled from "styled-components"
 import { toast } from "react-toastify"
+import { Formik, Field, Form } from "formik"
 
 const initialProductState = {
   title: "",
@@ -13,104 +14,87 @@ const initialProductState = {
 }
 
 const AddProduct = () => {
-  const [product, setProduct] = useState(initialProductState)
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target
-    setProduct({ ...product, [name]: value })
-  }
-
-  const createProduct = (event) => {
-    event.preventDefault()
-
-    ProductDataService.create(product).then(() => {
-      toast.success("Produto cadastrado com sucesso!!")
-      resetForm()
-    })
-  }
-
-  const resetForm = () => {
-    setProduct(initialProductState)
+  const createProduct = async (values, { resetForm }) => {
+    return ProductDataService.create(values)
+      .then(() => {
+        toast.success("Produto cadastrado com sucesso!!")
+        resetForm()
+      })
+      .catch((err) => {
+        toast.error("Erro ao cadastrar produto")
+      })
   }
 
   return (
     <Container>
-      <FormContainer onSubmit={createProduct} onReset={resetForm}>
-        <div>
-          <h2>Cadastrar Produtos</h2>
-          <div className="line"></div>
+      <Formik initialValues={initialProductState} onSubmit={createProduct}>
+        <FormContainer>
           <div>
+            <h2>Cadastrar Produtos</h2>
+            <div className="line"></div>
             <div>
-              <label>Nome</label> <br />
-              <input
-                type="text"
-                id="title"
-                required
-                value={product.title}
-                onChange={handleInputChange}
-                name="title"
-                placeholder="Coqueteleira"
-              />
+              <div>
+                <label>Nome</label> <br />
+                <Field
+                  type="text"
+                  id="title"
+                  required
+                  name="title"
+                  placeholder="Coqueteleira"
+                />
+              </div>
+              <div>
+                <label>Descrição</label> <br />
+                <Field
+                  type="text"
+                  id="description"
+                  required
+                  name="description"
+                  placeholder="Ex: Coqueteleira 500ml de aço inox"
+                />
+              </div>
+              <div>
+                <label>Preço</label> <br />
+                <Field
+                  type="number"
+                  id="price"
+                  required
+                  name="price"
+                  placeholder="Ex: 99.99"
+                />
+              </div>
+              <div>
+                <label>Quantidade em Estoque</label> <br />
+                <Field
+                  type="number"
+                  id="stock"
+                  required
+                  name="stock"
+                  placeholder="Ex: 50"
+                />
+              </div>
+              <div>
+                <label>Categoria</label> <br />
+                <Field
+                  type="number"
+                  id="category"
+                  required
+                  name="categoryId"
+                  placeholder="Ex: 2"
+                />
+              </div>
+              <br />
+              <button type="submit" className="btn btn-success">
+                Cadastrar Produto
+              </button>
+              <br />
+              <button type="reset" className="btn btn-cancel">
+                Recomeçar
+              </button>
             </div>
-            <div>
-              <label>Descrição</label> <br />
-              <input
-                type="text"
-                id="description"
-                required
-                value={product.description}
-                onChange={handleInputChange}
-                name="description"
-                placeholder="Ex: Coqueteleira 500ml de aço inox"
-              />
-            </div>
-            <div>
-              <label>Preço</label> <br />
-              <input
-                type="number"
-                id="price"
-                required
-                value={product.price}
-                onChange={handleInputChange}
-                name="price"
-                placeholder="Ex: 99.99"
-              />
-            </div>
-            <div>
-              <label>Quantidade em Estoque</label> <br />
-              <input
-                type="number"
-                id="stock"
-                required
-                value={product.stock}
-                onChange={handleInputChange}
-                name="stock"
-                placeholder="Ex: 50"
-              />
-            </div>
-            <div>
-              <label>Categoria</label> <br />
-              <input
-                type="number"
-                id="category"
-                required
-                value={product.categoryId}
-                onChange={handleInputChange}
-                name="categoryId"
-                placeholder="Ex: 2"
-              />
-            </div>
-            <br />{" "}
-            <button type="submit" className="btn btn-success">
-              Cadastrar Produto
-            </button>
-            <br />{" "}
-            <button type="reset" className="btn btn-cancel">
-              Recomeçar
-            </button>
           </div>
-        </div>
-      </FormContainer>
+        </FormContainer>
+      </Formik>
     </Container>
   )
 }
@@ -119,7 +103,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
 `
-const FormContainer = styled.form`
+const FormContainer = styled(Form)`
   display: flex;
   justify-content: center;
   width: 30vw;
