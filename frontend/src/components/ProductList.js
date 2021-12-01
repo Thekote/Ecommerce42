@@ -22,7 +22,7 @@ const ProductList = () => {
       <TitleList>Os mais vendidos </TitleList>
       <ProductsContainer>
         {products.map((product) => (
-          <div key={product.id}>
+          <li key={product.id}>
             <ProductCard
               title={product.title}
               price={product.price}
@@ -31,7 +31,7 @@ const ProductList = () => {
               imageUrl={product.imageUrl}
               categoryId={product.categoryId}
             />
-          </div>
+          </li>
         ))}
       </ProductsContainer>
     </MainContent>
@@ -42,7 +42,7 @@ const MainContent = styled.div`
   width: 80vw;
 `
 
-const ProductsContainer = styled.div`
+const ProductsContainer = styled.ul`
   background-color: #fff8;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
