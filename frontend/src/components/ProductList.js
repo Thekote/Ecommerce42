@@ -21,15 +21,15 @@ const ProductList = () => {
     <MainContent>
       <TitleList>Os mais vendidos </TitleList>
       <ProductsContainer>
-        {products.map((product) => (
-          <li key={product.id}>
+        {products.map(({ id, title, price, oldPrice, description, imageUrl, categoryId }) => (
+          <li key={id}>
             <ProductCard
-              title={product.title}
-              price={product.price}
-              oldPrice={product.oldPrice}
-              description={product.description}
-              imageUrl={product.imageUrl}
-              categoryId={product.categoryId}
+              title={title}
+              price={price}
+              oldPrice={oldPrice}
+              description={description}
+              imageUrl={imageUrl}
+              categoryId={categoryId}
             />
           </li>
         ))}
