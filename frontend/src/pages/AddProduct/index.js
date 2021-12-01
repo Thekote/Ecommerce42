@@ -3,6 +3,7 @@ import ProductDataService from "../../client/product"
 import styled from "styled-components"
 import { toast } from "react-toastify"
 import { Formik, Field, Form } from "formik"
+import * as yup from "yup"
 
 const initialProductState = {
   title: "",
@@ -13,87 +14,134 @@ const initialProductState = {
   categoryId: "",
 }
 
+const schema = yup.object().shape({
+  title: yup.string().required(),
+  description: yup.string().required(),
+  price: yup.number().required().positive(),
+  stock: yup.number().required().positive().integer(),
+  isActive: yup.boolean().required(),
+  categoryId: yup.number().required().positive().integer(),
+})
+const createProduct = async (values, { resetForm }) => {
+  return ProductDataService.create(values)
+    .then(() => {
+      toast.success("Produto cadastrado com sucesso!!")
+      resetForm()
+    })
+    .catch((err) => {
+      toast.error("Erro ao cadastrar produto")
+    })
+}
 const AddProduct = () => {
-  const createProduct = async (values, { resetForm }) => {
-    return ProductDataService.create(values)
-      .then(() => {
-        toast.success("Produto cadastrado com sucesso!!")
-        resetForm()
-      })
-      .catch((err) => {
-        toast.error("Erro ao cadastrar produto")
-      })
-  }
-
   return (
     <Container>
-      <Formik initialValues={initialProductState} onSubmit={createProduct}>
-        <FormContainer>
-          <div>
-            <h2>Cadastrar Produtos</h2>
-            <div className="line"></div>
+      <Formik
+        initialValues={initialProductState}
+        validationSchema={schema}
+        onSubmit={createProduct}
+      >
+        {({ errors, touched }) => (
+          <FormContainer>
             <div>
+              <h2>Cadastrar Produtos</h2>
+              <div className="line"></div>
               <div>
-                <label>Nome</label> <br />
-                <Field
-                  type="text"
-                  id="title"
-                  required
-                  name="title"
-                  placeholder="Coqueteleira"
-                />
+                <div>
+                  <label>Nome</label> <br />
+                  <Field
+                    type="text"
+                    id="title"
+                    required
+                    name="title"
+                    placeholder="Coqueteleira"
+                    className={errors.title && touched.title ? "has-error" : ""}
+                  />
+                  {errors.title && touched.title ? (
+                    <span className="error">{errors.title}</span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div>
+                  <label>Descrição</label> <br />
+                  <Field
+                    type="text"
+                    id="description"
+                    required
+                    name="description"
+                    placeholder="Ex: Coqueteleira 500ml de aço inox"
+                    className={
+                      errors.description && touched.description
+                        ? "has-error"
+                        : ""
+                    }
+                  />
+                  {errors.description && touched.description ? (
+                    <span className="error">{errors.description}</span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div>
+                  <label>Preço</label> <br />
+                  <Field
+                    type="number"
+                    id="price"
+                    required
+                    name="price"
+                    placeholder="Ex: 99.99"
+                    className={errors.price && touched.price ? "has-error" : ""}
+                  />
+                  {errors.price && touched.price ? (
+                    <span className="error">{errors.price}</span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div>
+                  <label>Quantidade em Estoque</label> <br />
+                  <Field
+                    type="number"
+                    id="stock"
+                    required
+                    name="stock"
+                    placeholder="Ex: 50"
+                    className={errors.stock && touched.stock ? "has-error" : ""}
+                  />
+                  {errors.stock && touched.stock ? (
+                    <span className="error">{errors.stock}</span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div>
+                  <label>Categoria</label> <br />
+                  <Field
+                    type="number"
+                    id="category"
+                    required
+                    name="categoryId"
+                    placeholder="Ex: 2"
+                    lassName={errors.stock && touched.stock ? "has-error" : ""}
+                  />
+                  {errors.categoryId && touched.categoryId ? (
+                    <span className="error">{errors.categoryId}</span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <br />
+                <button type="submit" className="btn btn-success">
+                  Cadastrar Produto
+                </button>
+                <br />
+                <button type="reset" className="btn btn-cancel">
+                  Recomeçar
+                </button>
               </div>
-              <div>
-                <label>Descrição</label> <br />
-                <Field
-                  type="text"
-                  id="description"
-                  required
-                  name="description"
-                  placeholder="Ex: Coqueteleira 500ml de aço inox"
-                />
-              </div>
-              <div>
-                <label>Preço</label> <br />
-                <Field
-                  type="number"
-                  id="price"
-                  required
-                  name="price"
-                  placeholder="Ex: 99.99"
-                />
-              </div>
-              <div>
-                <label>Quantidade em Estoque</label> <br />
-                <Field
-                  type="number"
-                  id="stock"
-                  required
-                  name="stock"
-                  placeholder="Ex: 50"
-                />
-              </div>
-              <div>
-                <label>Categoria</label> <br />
-                <Field
-                  type="number"
-                  id="category"
-                  required
-                  name="categoryId"
-                  placeholder="Ex: 2"
-                />
-              </div>
-              <br />
-              <button type="submit" className="btn btn-success">
-                Cadastrar Produto
-              </button>
-              <br />
-              <button type="reset" className="btn btn-cancel">
-                Recomeçar
-              </button>
             </div>
-          </div>
-        </FormContainer>
+          </FormContainer>
+        )}
       </Formik>
     </Container>
   )
@@ -126,6 +174,17 @@ const FormContainer = styled(Form)`
     border: 1px solid black;
     border-radius: 5px;
     padding-left: 10px;
+    &.has-error {
+      border: 1px solid red;
+      margin-bottom: 2px;
+    }
+  }
+
+  .error {
+    display: block;
+    font-size: 12px;
+    color: red;
+    margin: 0 0 5px 5px;
   }
 
   h2 {
