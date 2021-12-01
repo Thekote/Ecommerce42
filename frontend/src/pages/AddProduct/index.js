@@ -123,7 +123,7 @@ const AddProduct = () => {
                     required
                     name="categoryId"
                     placeholder="Ex: 2"
-                    lassName={errors.stock && touched.stock && "has-error"}
+                    className={errors.stock && touched.stock && "has-error"}
                   />
                   {errors.categoryId && touched.categoryId && (
                     <span className="error">{errors.categoryId}</span>
