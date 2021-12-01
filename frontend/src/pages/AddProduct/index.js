@@ -15,12 +15,23 @@ const initialProductState = {
 }
 
 const schema = yup.object().shape({
-  title: yup.string().required(),
-  description: yup.string().required(),
-  price: yup.number().required().positive(),
-  stock: yup.number().required().positive().integer(),
+  title: yup.string().required("O nome é obrigatório."),
+  description: yup.string().required("A descrição é obrigatória."),
+  price: yup
+    .number()
+    .required("O preço é obrigatório.")
+    .positive("O preço deve ser um número positivo."),
+  stock: yup
+    .number()
+    .required("A quantidade é obrigatória.")
+    .positive("A quantidade deve ser um número positivo.")
+    .integer("A quantidade deve ser um número inteiro."),
   isActive: yup.boolean().required(),
-  categoryId: yup.number().required().positive().integer(),
+  categoryId: yup
+    .number()
+    .required("A categoria é obrigatória.")
+    .positive("A categoria deve ser um número positivo.")
+    .integer("A categoria deve ser um número inteiro."),
 })
 const createProduct = async (values, { resetForm }) => {
   return ProductDataService.create(values)
@@ -54,12 +65,10 @@ const AddProduct = () => {
                     required
                     name="title"
                     placeholder="Coqueteleira"
-                    className={errors.title && touched.title ? "has-error" : ""}
+                    className={errors.title && touched.title && "has-error"}
                   />
-                  {errors.title && touched.title ? (
+                  {errors.title && touched.title && (
                     <span className="error">{errors.title}</span>
-                  ) : (
-                    ""
                   )}
                 </div>
                 <div>
@@ -71,15 +80,11 @@ const AddProduct = () => {
                     name="description"
                     placeholder="Ex: Coqueteleira 500ml de aço inox"
                     className={
-                      errors.description && touched.description
-                        ? "has-error"
-                        : ""
+                      errors.description && touched.description && "has-error"
                     }
                   />
-                  {errors.description && touched.description ? (
+                  {errors.description && touched.description && (
                     <span className="error">{errors.description}</span>
-                  ) : (
-                    ""
                   )}
                 </div>
                 <div>
@@ -90,12 +95,10 @@ const AddProduct = () => {
                     required
                     name="price"
                     placeholder="Ex: 99.99"
-                    className={errors.price && touched.price ? "has-error" : ""}
+                    className={errors.price && touched.price && "has-error"}
                   />
-                  {errors.price && touched.price ? (
+                  {errors.price && touched.price && (
                     <span className="error">{errors.price}</span>
-                  ) : (
-                    ""
                   )}
                 </div>
                 <div>
@@ -106,12 +109,10 @@ const AddProduct = () => {
                     required
                     name="stock"
                     placeholder="Ex: 50"
-                    className={errors.stock && touched.stock ? "has-error" : ""}
+                    className={errors.stock && touched.stock && "has-error"}
                   />
-                  {errors.stock && touched.stock ? (
+                  {errors.stock && touched.stock && (
                     <span className="error">{errors.stock}</span>
-                  ) : (
-                    ""
                   )}
                 </div>
                 <div>
@@ -122,12 +123,10 @@ const AddProduct = () => {
                     required
                     name="categoryId"
                     placeholder="Ex: 2"
-                    lassName={errors.stock && touched.stock ? "has-error" : ""}
+                    lassName={errors.stock && touched.stock && "has-error"}
                   />
-                  {errors.categoryId && touched.categoryId ? (
+                  {errors.categoryId && touched.categoryId && (
                     <span className="error">{errors.categoryId}</span>
-                  ) : (
-                    ""
                   )}
                 </div>
                 <br />
