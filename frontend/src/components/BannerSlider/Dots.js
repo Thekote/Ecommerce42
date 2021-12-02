@@ -24,8 +24,9 @@ const Container = styled.div`
   justify-content: center;
   z-index: 200;
 `
-const Dot = styled.span`
+const Dot = styled.button`
   ${(props) => css`
+    border: none;
     cursor: pointer;
     height: 1.5rem;
     width: 1.5rem;
