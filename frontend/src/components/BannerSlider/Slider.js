@@ -4,6 +4,7 @@ import Dots from "./Dots"
 import Arrows from "./Arrows"
 import sliderImage from "./sliderImage"
 import "./slider.css"
+import styled from "styled-components"
 
 const len = sliderImage.length - 1
 
@@ -18,7 +19,7 @@ function Slider(props) {
   }, [activeIndex])
 
   return (
-    <div className="slider-container">
+    <Container>
       <SliderContent activeIndex={activeIndex} sliderImage={sliderImage} />
       <Arrows
         prevSlide={() =>
@@ -33,8 +34,16 @@ function Slider(props) {
         sliderImage={sliderImage}
         onclick={(activeIndex) => setActiveIndex(activeIndex)}
       />
-    </div>
+    </Container>
   )
 }
+
+const Container = styled.div`
+  height: var(--heights);
+  width: var(--widths);
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+`
 
 export default Slider
