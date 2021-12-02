@@ -10,4 +10,9 @@ export default createGlobalStyle`
   -moz-osx-font-smoothing: grayscale;
   }
 
+  :root {
+  --heights: 50vh;
+  --widths: 100%;
+}
+
 `
