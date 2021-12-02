@@ -1,77 +1,93 @@
-import React, { useState } from "react"
+import React from "react"
 import CategoryDataService from "../../client/category"
 import styled from "styled-components"
 import { toast } from "react-toastify"
+import { Formik, Field, Form } from "formik"
+import * as yup from "yup"
 
 const initialCategoryState = {
   description: "",
   cod: "",
   isActive: true,
 }
+const schema = yup.object().shape({
+  description: yup.string().required("A descrição da categoria é obrigatório."),
+  cod: yup
+    .string()
+    .required("O código da categoria é obrigatório.")
+    .max(3, "O código deve ter até 3 caracteres")
+    .strict()
+    .uppercase("O código da categoria deve ser maiúsculo"),
+  isActive: yup.boolean().required(),
+})
 
-const AddCategory = () => {
-  const [category, setCategory] = useState(initialCategoryState)
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target
-    setCategory({ ...category, [name]: value })
-  }
-
-  const createCategory = (event) => {
-    event.preventDefault()
-
-    CategoryDataService.create(category).then(() => {
+const createCategory = async (values, { resetForm }) => {
+  return CategoryDataService.create(values)
+    .then(() => {
       toast.success("Categoria criada com sucesso!!")
       resetForm()
     })
-  }
-
-  const resetForm = () => {
-    setCategory(initialCategoryState)
-  }
-
+    .catch((err) => {
+      toast.error("Erro ao cadastrar categoria")
+    })
+}
+const AddCategory = () => {
   return (
     <Container>
-      <FormContainer onSubmit={createCategory} onReset={resetForm}>
-        <div>
-          <h2>Cadastrar Categorias de Produtos</h2>
-          <div className="line"></div>
-          <div>
+      <Formik
+        initialValues={initialCategoryState}
+        validationSchema={schema}
+        onSubmit={createCategory}
+      >
+        {({ errors, touched }) => (
+          <FormContainer>
             <div>
-              <label>Descrição</label> <br />
-              <input
-                type="text"
-                id="description"
-                required
-                value={category.description}
-                onChange={handleInputChange}
-                name="description"
-                placeholder="Ex: Utensílios"
-              />
+              <h2>Cadastrar Categorias de Produtos</h2>
+              <div className="line"></div>
+              <div>
+                <div>
+                  <label>Descrição</label> <br />
+                  <Field
+                    type="text"
+                    id="description"
+                    required
+                    name="description"
+                    placeholder="Ex: Utensílios"
+                    className={
+                      errors.description && touched.description && "has-error"
+                    }
+                  />
+                  {errors.description && touched.description && (
+                    <span className="error">{errors.description}</span>
+                  )}
+                </div>
+                <div>
+                  <label>Código da Categoria</label> <br />
+                  <Field
+                    type="text"
+                    id="cod"
+                    required
+                    name="cod"
+                    placeholder="Ex: UTN"
+                    className={errors.cod && touched.cod && "has-error"}
+                  />
+                  {errors.cod && touched.cod && (
+                    <span className="error">{errors.cod}</span>
+                  )}
+                </div>
+                <br />
+                <button type="submit" className="btn btn-success">
+                  Cadastrar Categoria
+                </button>
+                <br />
+                <button type="reset" className="btn btn-cancel">
+                  Recomeçar
+                </button>
+              </div>
             </div>
-            <div>
-              <label>Código da Categoria</label> <br />
-              <input
-                type="text"
-                id="cod"
-                required
-                value={category.cod}
-                onChange={handleInputChange}
-                name="cod"
-                placeholder="Ex: UTN"
-              />
-            </div>
-            <br />{" "}
-            <button type="submit" className="btn btn-success">
-              Cadastrar Categoria
-            </button>
-            <br />{" "}
-            <button type="reset" className="btn btn-cancel">
-              Recomeçar
-            </button>
-          </div>
-        </div>
-      </FormContainer>
+          </FormContainer>
+        )}
+      </Formik>
     </Container>
   )
 }
@@ -80,7 +96,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
 `
-const FormContainer = styled.form`
+const FormContainer = styled(Form)`
   display: flex;
   justify-content: center;
   width: 30vw;
@@ -103,6 +119,17 @@ const FormContainer = styled.form`
     border: 1px solid black;
     border-radius: 5px;
     padding-left: 10px;
+    &.has-error {
+      border: 1px solid red;
+      margin-bottom: 2px;
+    }
+  }
+
+  .error {
+    display: block;
+    font-size: 12px;
+    color: red;
+    margin: 0 0 5px 5px;
   }
 
   h2 {
