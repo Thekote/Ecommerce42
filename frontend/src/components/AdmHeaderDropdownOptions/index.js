@@ -28,8 +28,7 @@ const MenuLink = styled(Link)`
   color: black;
   transition: all 0.3s ease-in;
   font-size: 1rem;
-  display:block;
-
+  display: block;
 
   &:hover {
     color: gray;
