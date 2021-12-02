@@ -1,15 +1,15 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 function Dots({ activeIndex, onclick, sliderImage }) {
   return (
     <Container>
       {sliderImage.map((slide, index) => (
-        <span
+        <Dot
           key={index}
-          className={`${activeIndex === index ? "dot active-dot" : "dot"}`}
+          active={activeIndex === index}
           onClick={() => onclick(index)}
-        ></span>
+        />
       ))}
     </Container>
   )
@@ -24,23 +24,26 @@ const Container = styled.div`
   justify-content: center;
   z-index: 200;
 
-  .dot {
-  cursor: pointer;
-  height: 1.5rem;
-  width: 1.5rem;
-  margin: 0px 3px;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 50%;
-  display: inline-block;
-  }
 
-  .active-dot,
-  .dot:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
+`
+const Dot = styled.span`
+  ${(props) => css`
+    cursor: pointer;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin: 0px 3px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    display: inline-block;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
 
+    ${props.active && css`
+      background-color: rgba(255, 255, 255, 0.5);
+    `}
 
-
+  `}
 `
 
 
