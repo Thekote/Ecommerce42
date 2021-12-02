@@ -23,8 +23,6 @@ const Container = styled.div`
   top: 85%;
   justify-content: center;
   z-index: 200;
-
-
 `
 const Dot = styled.span`
   ${(props) => css`
@@ -39,12 +37,11 @@ const Dot = styled.span`
       background-color: rgba(255, 255, 255, 0.5);
     }
 
-    ${props.active && css`
+    ${props.active &&
+    css`
       background-color: rgba(255, 255, 255, 0.5);
     `}
-
   `}
 `
-
 
 export default Dots

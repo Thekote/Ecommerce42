@@ -56,7 +56,6 @@ const Container = styled.section`
     top: 65%;
     font-size: 2rem;
   }
-
 `
 
 export default SliderContent

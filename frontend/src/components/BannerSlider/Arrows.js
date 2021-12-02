@@ -1,6 +1,5 @@
 import React from "react"
-import styled, { css }  from "styled-components"
-
+import styled, { css } from "styled-components"
 
 function Arrows({ prevSlide, nextSlide }) {
   return (
@@ -33,12 +32,12 @@ const Arrow = styled.span`
       transition: all 0.5s ease-in;
     }
 
-    ${direction === 'next' && css `
+    ${direction === "next" &&
+    css`
       right: 0;
       border-radius: 5px 0px 0px 5px;
     `}
   `}
-
 `
 
 export default Arrows
