@@ -14,8 +14,10 @@ function Arrows({ prevSlide, nextSlide }) {
   )
 }
 
-const Arrow = styled.span`
+const Arrow = styled.button`
   ${({ direction }) => css`
+    border: none;
+    background-color: transparent;
     cursor: pointer;
     z-index: 100;
     position: absolute;
