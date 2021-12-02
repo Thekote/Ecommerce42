@@ -12,7 +12,12 @@ const initialCategoryState = {
 }
 const schema = yup.object().shape({
   description: yup.string().required("A descrição da categoria é obrigatório."),
-  cod: yup.string().required("O código da categoria é obrigatório.").max(3, "O código deve ter até 3 caracteres").strict().uppercase("O código da categoria deve ser maiúsculo"),
+  cod: yup
+    .string()
+    .required("O código da categoria é obrigatório.")
+    .max(3, "O código deve ter até 3 caracteres")
+    .strict()
+    .uppercase("O código da categoria deve ser maiúsculo"),
   isActive: yup.boolean().required(),
 })
 
@@ -35,50 +40,52 @@ const AddCategory = () => {
         onSubmit={createCategory}
       >
         {({ errors, touched }) => (
-        <FormContainer>
-          <div>
-            <h2>Cadastrar Categorias de Produtos</h2>
-            <div className="line"></div>
+          <FormContainer>
             <div>
+              <h2>Cadastrar Categorias de Produtos</h2>
+              <div className="line"></div>
               <div>
-                <label>Descrição</label> <br />
-                <Field
-                  type="text"
-                  id="description"
-                  required
-                  name="description"
-                  placeholder="Ex: Utensílios"
-                  className={errors.description && touched.description && "has-error"}
-                />
-                {errors.description && touched.description && (
-                  <span className="error">{errors.description}</span>
-                )}
+                <div>
+                  <label>Descrição</label> <br />
+                  <Field
+                    type="text"
+                    id="description"
+                    required
+                    name="description"
+                    placeholder="Ex: Utensílios"
+                    className={
+                      errors.description && touched.description && "has-error"
+                    }
+                  />
+                  {errors.description && touched.description && (
+                    <span className="error">{errors.description}</span>
+                  )}
+                </div>
+                <div>
+                  <label>Código da Categoria</label> <br />
+                  <Field
+                    type="text"
+                    id="cod"
+                    required
+                    name="cod"
+                    placeholder="Ex: UTN"
+                    className={errors.cod && touched.cod && "has-error"}
+                  />
+                  {errors.cod && touched.cod && (
+                    <span className="error">{errors.cod}</span>
+                  )}
+                </div>
+                <br />
+                <button type="submit" className="btn btn-success">
+                  Cadastrar Categoria
+                </button>
+                <br />
+                <button type="reset" className="btn btn-cancel">
+                  Recomeçar
+                </button>
               </div>
-              <div>
-                <label>Código da Categoria</label> <br />
-                <Field
-                  type="text"
-                  id="cod"
-                  required
-                  name="cod"
-                  placeholder="Ex: UTN"
-                  className={errors.cod && touched.cod && "has-error"}
-                />
-                {errors.cod && touched.cod && (
-                  <span className="error">{errors.cod}</span>
-                )}
-              </div>
-              <br />
-              <button type="submit" className="btn btn-success">
-                Cadastrar Categoria
-              </button>
-              <br />
-              <button type="reset" className="btn btn-cancel">
-                Recomeçar
-              </button>
             </div>
-          </div>
-        </FormContainer>
+          </FormContainer>
         )}
       </Formik>
     </Container>
