@@ -3,12 +3,19 @@ import CategoryDataService from "../../client/category"
 import styled from "styled-components"
 import { toast } from "react-toastify"
 import { Formik, Field, Form } from "formik"
+import * as yup from "yup"
 
 const initialCategoryState = {
   description: "",
   cod: "",
   isActive: true,
 }
+const schema = yup.object().shape({
+  description: yup.string().required("A descrição da categoria é obrigatório."),
+  cod: yup.string().required("O código da categoria é obrigatório.").max(3, "O código deve ter até 3 caracteres").strict().uppercase("O código da categoria deve ser maiúsculo"),
+  isActive: yup.boolean().required(),
+})
+
 const createCategory = async (values, { resetForm }) => {
   return CategoryDataService.create(values)
     .then(() => {
@@ -22,7 +29,12 @@ const createCategory = async (values, { resetForm }) => {
 const AddCategory = () => {
   return (
     <Container>
-      <Formik initialValues={initialCategoryState} onSubmit={createCategory}>
+      <Formik
+        initialValues={initialCategoryState}
+        validationSchema={schema}
+        onSubmit={createCategory}
+      >
+        {({ errors, touched }) => (
         <FormContainer>
           <div>
             <h2>Cadastrar Categorias de Produtos</h2>
@@ -36,7 +48,11 @@ const AddCategory = () => {
                   required
                   name="description"
                   placeholder="Ex: Utensílios"
+                  className={errors.description && touched.description && "has-error"}
                 />
+                {errors.description && touched.description && (
+                  <span className="error">{errors.description}</span>
+                )}
               </div>
               <div>
                 <label>Código da Categoria</label> <br />
@@ -46,7 +62,11 @@ const AddCategory = () => {
                   required
                   name="cod"
                   placeholder="Ex: UTN"
+                  className={errors.cod && touched.cod && "has-error"}
                 />
+                {errors.cod && touched.cod && (
+                  <span className="error">{errors.cod}</span>
+                )}
               </div>
               <br />
               <button type="submit" className="btn btn-success">
@@ -59,6 +79,7 @@ const AddCategory = () => {
             </div>
           </div>
         </FormContainer>
+        )}
       </Formik>
     </Container>
   )
