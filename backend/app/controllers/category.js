@@ -1,12 +1,11 @@
-const { Category } = require('../../models');
-
+const { Category } = require("../../models");
 
 const createCategory = async (req, res) => {
     try {
         const category = await Category.create(req.body);
         return res.status(201).json({
             category,
-        })
+        });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
@@ -23,7 +22,9 @@ const listCategories = async (req, res) => {
 
 const findOneCategory = async (req, res) => {
     try {
-        const category = await Category.findOne({where: {id: req.params.id}});
+        const category = await Category.findOne({
+            where: { id: req.params.id },
+        });
         return res.json(category);
     } catch (error) {
         return res.status(404).json({ error: error.message });
@@ -33,15 +34,16 @@ const findOneCategory = async (req, res) => {
 const updateCategory = async (req, res) => {
     try {
         const { id } = req.params;
-        const [updated] = await Category.update (req.body, {
-            where: { id: id }
+        const [updated] = await Category.update(req.body, {
+            where: { id: id },
         });
         if (updated) {
-            const updatedCategory = await Category.findOne({ where: { id: id }});
-            return res.status(200).json({ category: updatedCategory});
+            const updatedCategory = await Category.findOne({
+                where: { id: id },
+            });
+            return res.status(200).json({ category: updatedCategory });
         }
-        throw new Error ('Category not found');
-
+        throw new Error("Category not found");
     } catch (error) {
         return res.status(500).send(error.message);
     }
@@ -49,16 +51,12 @@ const updateCategory = async (req, res) => {
 
 const enableCategory = async (req, res) => {
     try {
-        const category = await Category.findOne({where: {id: req.params.id}});
-        if(!category.isActive){
-            category.isActive = true;
-            await category.save();
-        } else {
-            throw new Error ('Category already enabled');
-        }
-
+        const category = await Category.findOne({
+            where: { id: req.params.id },
+        });
+        category.isActive = true;
+        await category.save();
         return res.sendStatus(204);
-
     } catch (error) {
         return res.status(404).json({ error: error.message });
     }
@@ -66,24 +64,16 @@ const enableCategory = async (req, res) => {
 
 const disableCategory = async (req, res) => {
     try {
-        const category = await Category.findOne({where: {id: req.params.id}});
-
-        if(category.isActive){
-            category.isActive = false;
-            await category.save();
-        } else {
-            throw new Error ('Category already disabled');
-        }
-
+        const category = await Category.findOne({
+            where: { id: req.params.id },
+        });
+        category.isActive = false;
+        await category.save();
         return res.sendStatus(204);
-
-
     } catch (error) {
         return res.status(404).json({ error: error.message });
     }
 };
-
-
 
 module.exports = {
     createCategory,
@@ -91,5 +81,5 @@ module.exports = {
     findOneCategory,
     updateCategory,
     enableCategory,
-    disableCategory
+    disableCategory,
 };
