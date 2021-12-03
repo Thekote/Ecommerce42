@@ -58,13 +58,8 @@ const updateProduct = async (req, res) => {
 const enableProduct = async (req, res) => {
     try {
         const product = await Product.findOne({ where: { id: req.params.id } });
-        if (!product.isActive) {
-            product.isActive = true;
-            await product.save();
-        } else {
-            throw new Error("Product already enabled");
-        }
-
+        product.isActive = true;
+        await product.save();
         return res.sendStatus(204);
     } catch (error) {
         return res.status(404).json({ error: error.message });
@@ -74,14 +69,8 @@ const enableProduct = async (req, res) => {
 const disableProduct = async (req, res) => {
     try {
         const product = await Product.findOne({ where: { id: req.params.id } });
-
-        if (product.isActive) {
-            product.isActive = false;
-            await product.save();
-        } else {
-            throw new Error("Product already disabled");
-        }
-
+        product.isActive = false;
+        await product.save();
         return res.sendStatus(204);
     } catch (error) {
         return res.status(404).json({ error: error.message });
