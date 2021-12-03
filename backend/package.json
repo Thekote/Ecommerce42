@@ -16,9 +16,12 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.14",
+    "prettier": "^2.5.0",
     "sequelize-cli": "^6.2.0"
   },
   "scripts": {
-    "dev": "nodemon app/index.js"
+    "dev": "nodemon app/index.js",
+    "prettier": "prettier **/*.js --check",
+    "prettier:format": "prettier **/*.{js,html,jsx,css,ts,tsx} --write"
   }
 }
