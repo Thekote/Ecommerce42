@@ -1,11 +1,20 @@
 const { Product } = require("../../models");
+const yup = require("yup");
+
+const schema = yup.object().shape({
+    title: yup.string().required(),
+    description: yup.string().required(),
+    price: yup.number().required().positive(),
+    stock: yup.number().required().positive().integer(),
+    isActive: yup.boolean().required(),
+    categoryId: yup.number().required().positive().integer(),
+});
 
 const createProduct = async (req, res) => {
     try {
+        await schema.validate(req.body);
         const product = await Product.create(req.body);
-        return res.status(201).json({
-            product,
-        });
+        res.json(product);
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
@@ -31,13 +40,14 @@ const findOneProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
     try {
+        const value = await schema.validate(req.body);
         const { id } = req.params;
-        const [updated] = await Product.update(req.body, {
+        const [updated] = await Product.update(value, {
             where: { id: id },
         });
         if (updated) {
             const updatedProduct = await Product.findOne({ where: { id: id } });
-            return res.status(200).json({ product: updatedProduct });
+            return res.status(200).json({ updatedProduct });
         }
         throw new Error("Product not found");
     } catch (error) {
