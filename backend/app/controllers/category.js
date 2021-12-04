@@ -1,7 +1,15 @@
 const { Category } = require("../../models");
+const yup = require("yup");
+
+const schema = yup.object().shape({
+    description: yup.string().required(),
+    cod: yup.string().required().max(3).strict().uppercase(),
+    isActive: yup.boolean().required(),
+});
 
 const createCategory = async (req, res) => {
     try {
+        await schema.validate(req.body);
         const category = await Category.create(req.body);
         return res.status(201).json({
             category,
@@ -33,15 +41,16 @@ const findOneCategory = async (req, res) => {
 
 const updateCategory = async (req, res) => {
     try {
+        const value = await schema.validate(req.body);
         const { id } = req.params;
-        const [updated] = await Category.update(req.body, {
+        const [updated] = await Category.update(value, {
             where: { id: id },
         });
         if (updated) {
             const updatedCategory = await Category.findOne({
                 where: { id: id },
             });
-            return res.status(200).json({ category: updatedCategory });
+            return res.status(200).json({ updatedCategory });
         }
         throw new Error("Category not found");
     } catch (error) {
@@ -54,13 +63,8 @@ const enableCategory = async (req, res) => {
         const category = await Category.findOne({
             where: { id: req.params.id },
         });
-        if (!category.isActive) {
-            category.isActive = true;
-            await category.save();
-        } else {
-            throw new Error("Category already enabled");
-        }
-
+        category.isActive = true;
+        await category.save();
         return res.sendStatus(204);
     } catch (error) {
         return res.status(404).json({ error: error.message });
@@ -72,14 +76,8 @@ const disableCategory = async (req, res) => {
         const category = await Category.findOne({
             where: { id: req.params.id },
         });
-
-        if (category.isActive) {
-            category.isActive = false;
-            await category.save();
-        } else {
-            throw new Error("Category already disabled");
-        }
-
+        category.isActive = false;
+        await category.save();
         return res.sendStatus(204);
     } catch (error) {
         return res.status(404).json({ error: error.message });
