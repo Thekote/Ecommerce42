@@ -16,13 +16,16 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "jest": "^27.4.3",
     "nodemon": "^2.0.14",
     "prettier": "^2.5.0",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "supertest": "^6.1.6"
   },
   "scripts": {
     "dev": "nodemon app/index.js",
     "prettier": "prettier **/*.js --check",
-    "prettier:format": "prettier **/*.{js,html,jsx,css,ts,tsx} --write"
+    "prettier:format": "prettier **/*.{js,html,jsx,css,ts,tsx} --write",
+    "test": "jest"
   }
 }

@@ -32,9 +32,14 @@ const listProduct = async (req, res) => {
 const findOneProduct = async (req, res) => {
     try {
         const product = await Product.findOne({ where: { id: req.params.id } });
+
+        if (!product) {
+            return res.sendStatus(404);
+        }
+
         return res.json(product);
     } catch (error) {
-        return res.status(404).json({ error: error.message });
+        return res.status(500).json({ error: error.message });
     }
 };
 
