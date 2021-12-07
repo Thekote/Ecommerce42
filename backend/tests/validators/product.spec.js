@@ -10,7 +10,7 @@ const mockedValidProduct = {
 };
 describe("Product Validator", () => {
     describe("When product is valid", () => {
-        it("should throw an error", async () => {
+        it("should not throw an error", async () => {
             await expect(() =>
                 productValidator.validate(mockedValidProduct, {
                     abortEarly: false,
@@ -36,6 +36,30 @@ describe("Product Validator", () => {
             await expect(() =>
                 productValidator.validate(product, { abortEarly: false })
             ).rejects.toThrow("title is a required field");
+        });
+    });
+
+    describe("Description", () => {
+        it("should throw an error when description is empty", async () => {
+            const product = {
+                ...mockedValidProduct,
+                description: "",
+            };
+            await expect(() =>
+                productValidator.validate(product, { abortEarly: false })
+            ).rejects.toThrow("description is a required field");
+        });
+
+        it("should throw an error when description is not a string", async () => {
+            const product = {
+                ...mockedValidProduct,
+                description: null,
+            };
+            await expect(() =>
+                productValidator.validate(product, { abortEarly: false })
+            ).rejects.toThrow(
+                "description must be a `string` type, but the final value was: `null`."
+            );
         });
     });
 
@@ -118,7 +142,7 @@ describe("Product Validator", () => {
     });
 
     describe("IsActive", () => {
-        it("should throw an error when isActive is not a boolean", async () => {
+        it("should throw an error when isActive is empty", async () => {
             const product = {
                 ...mockedValidProduct,
                 isActive: undefined,
