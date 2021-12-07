@@ -1,18 +1,9 @@
 const { Product } = require("../../models");
-const yup = require("yup");
-
-const schema = yup.object().shape({
-    title: yup.string().required(),
-    description: yup.string().required(),
-    price: yup.number().required().positive(),
-    stock: yup.number().required().positive().integer(),
-    isActive: yup.boolean().required(),
-    categoryId: yup.number().required().positive().integer(),
-});
+const productValidator = require("../validators/Product");
 
 const createProduct = async (req, res) => {
     try {
-        await schema.validate(req.body);
+        await productValidator.validate(req.body);
         const product = await Product.create(req.body);
         res.json(product);
     } catch (error) {
@@ -45,7 +36,7 @@ const findOneProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
     try {
-        const value = await schema.validate(req.body);
+        const value = await productValidator.validate(req.body);
         const { id } = req.params;
         const [updated] = await Product.update(value, {
             where: { id: id },
