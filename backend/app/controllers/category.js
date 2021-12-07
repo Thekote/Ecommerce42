@@ -1,15 +1,9 @@
 const { Category } = require("../../models");
-const yup = require("yup");
-
-const schema = yup.object().shape({
-    description: yup.string().required(),
-    cod: yup.string().required().max(3).strict().uppercase(),
-    isActive: yup.boolean().required(),
-});
+const categoryValidator = require("../validators/Category");
 
 const createCategory = async (req, res) => {
     try {
-        await schema.validate(req.body);
+        await categoryValidator.validate(req.body);
         const category = await Category.create(req.body);
         return res.status(201).json({
             category,
@@ -41,7 +35,7 @@ const findOneCategory = async (req, res) => {
 
 const updateCategory = async (req, res) => {
     try {
-        const value = await schema.validate(req.body);
+        const value = await categoryValidator.validate(req.body);
         const { id } = req.params;
         const [updated] = await Category.update(value, {
             where: { id: id },
