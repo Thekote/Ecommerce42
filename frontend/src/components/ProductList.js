@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import ProductCard from "./ProductCard"
 import axios from "axios"
-import SearchBar2 from "./SearchBar"
+import SearchBar from "./SearchBar"
 
 const ProductList = () => {
   const [products, setProducts] = useState([])
@@ -31,18 +31,7 @@ const ProductList = () => {
   return (
     <MainContent>
       <TitleList>Confira nossos produtos </TitleList>
-      <SearchBar2
-        placeholder="teste"
-        value={filterProduct}
-        onChange={handleChangeFilterProduct}
-      />
-      <SearchBar
-        value={filterProduct}
-        type="text"
-        placeholder="Buscar"
-        onChange={handleChangeFilterProduct}
-      />
-
+      <SearchBar value={filterProduct} onChange={handleChangeFilterProduct} />
       <ProductsContainer>
         {filteredProducts.map(
           ({
@@ -106,14 +95,6 @@ const TitleList = styled.h2`
   margin-top: 30px;
   font-size: 2em;
   text-align: center;
-`
-
-const SearchBar = styled.input`
-  height: 40px;
-  width: 30rem;
-  padding: 0 20px;
-  border-radius: 5px;
-  border: 1px solid black;
 `
 
 export default ProductList
