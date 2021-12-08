@@ -1,12 +1,8 @@
 import styled from "styled-components"
 
-const SearchBar = (props) => {
-  return (
-    <div>
-      <Input type="search" placeholder="Search..." {...props} />
-    </div>
-  )
-}
+const SearchBar = (props) => (
+  <Input type="text" placeholder="Pesquisar" {...props} />
+)
 
 export default SearchBar
 
