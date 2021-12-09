@@ -18,6 +18,7 @@ const ProductCard = ({ imageUrl, title, description, price }) => {
 }
 
 const ProductContainer = styled.div`
+  height: 25rem;
   font-family: "Rubik", sans-serif;
   border-radius: 10px;
   padding: 10px;
@@ -26,6 +27,7 @@ const ProductContainer = styled.div`
   box-shadow: 0px 5px 5px gray;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 `
 
 const ProdImg = styled.div`
