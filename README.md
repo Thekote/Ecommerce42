@@ -1,6 +1,5 @@
 # Ecommerce42
 
-
 <h2 align="center">
  <strong align="center">Ecommerce project for Imersão42</strong>
 </h2>
@@ -27,22 +26,22 @@
 
 This project is focused on creating a website where you can shop products for bartending.
 
-This project is part of the Imersão42 provide by [CodeMiner42](https://www.codeminer42.com/). 
-
-
+This project is part of the Imersão42 provide by [CodeMiner42](https://www.codeminer42.com/).
 
 ## :wrench: Built With
 
 - [Node.js](https://nodejs.org/en/)
+- [Express](https://expressjs.com/pt-br/)
 - [React](https://reactjs.org/)
 - [CSS](https://devdocs.io/css/)
+- [Postgres](https://postgresql.org/)
 
 ## :eyes: How to Use
 
 - Clone the project: `git clone https://github.com/Thekote/Ecommerce42`;
-- Install dependencies: `yarn install`;
-- Run development server: `yarn dev`;
-- Open http://localhost:3000 with your browser to see the result.
+- Install dependencies: `npm install`;
+- Run development server: `npm run dev`;
+- Open http://localhost:3005 with your browser to see the result.
 
 Then start coding!
 
