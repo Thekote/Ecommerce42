@@ -64,6 +64,7 @@ const ProdPrice = styled.div`
 `
 
 const BtnAddCart = styled.div`
+  cursor: pointer;
   color: white;
   width: 100%;
   height: 40px;
