@@ -2,9 +2,19 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import ProductCard from "./ProductCard"
 import axios from "axios"
+import SearchBar from "./SearchBar"
 
 const ProductList = () => {
   const [products, setProducts] = useState([])
+  const [filterProduct, setFilterProduct] = useState("")
+
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(filterProduct.toLowerCase())
+  )
+
+  const handleChangeFilterProduct = (event) => {
+    setFilterProduct(event.target.value)
+  }
 
   useEffect(() => {
     axios
@@ -13,26 +23,38 @@ const ProductList = () => {
       )
       .then((response) => {
         const dataProducts = response.data
+
         setProducts(dataProducts)
       })
   }, [])
 
   return (
     <MainContent>
-      <TitleList>Os mais vendidos </TitleList>
+      <TitleList>Confira nossos produtos </TitleList>
+      <SearchBar value={filterProduct} onChange={handleChangeFilterProduct} />
       <ProductsContainer>
-        {products.map(({ id, title, price, oldPrice, description, imageUrl, categoryId }) => (
-          <li key={id}>
-            <ProductCard
-              title={title}
-              price={price}
-              oldPrice={oldPrice}
-              description={description}
-              imageUrl={imageUrl}
-              categoryId={categoryId}
-            />
-          </li>
-        ))}
+        {filteredProducts.map(
+          ({
+            id,
+            title,
+            price,
+            oldPrice,
+            description,
+            imageUrl,
+            categoryId,
+          }) => (
+            <li key={id}>
+              <ProductCard
+                title={title}
+                price={price}
+                oldPrice={oldPrice}
+                description={description}
+                imageUrl={imageUrl}
+                categoryId={categoryId}
+              />
+            </li>
+          )
+        )}
       </ProductsContainer>
     </MainContent>
   )
@@ -40,6 +62,9 @@ const ProductList = () => {
 
 const MainContent = styled.div`
   width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const ProductsContainer = styled.ul`

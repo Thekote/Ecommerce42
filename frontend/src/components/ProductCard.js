@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-const ProductCard = ({title, description, oldPrice, price}) => {
+const ProductCard = ({ title, description, oldPrice, price }) => {
   return (
     <ProductContainer>
       <ProdImg>
