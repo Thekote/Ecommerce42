@@ -33,28 +33,16 @@ const ProductList = () => {
       <TitleList>Confira nossos produtos </TitleList>
       <SearchBar value={filterProduct} onChange={handleChangeFilterProduct} />
       <ProductsContainer>
-        {filteredProducts.map(
-          ({
-            id,
-            title,
-            price,
-            oldPrice,
-            description,
-            imageUrl,
-            categoryId,
-          }) => (
-            <li key={id}>
-              <ProductCard
-                title={title}
-                price={price}
-                oldPrice={oldPrice}
-                description={description}
-                imageUrl={imageUrl}
-                categoryId={categoryId}
-              />
-            </li>
-          )
-        )}
+        {filteredProducts.map(({ id, title, price, description, imageUrl }) => (
+          <li key={id}>
+            <ProductCard
+              title={title}
+              price={price}
+              description={description}
+              imageUrl={imageUrl}
+            />
+          </li>
+        ))}
       </ProductsContainer>
     </MainContent>
   )
