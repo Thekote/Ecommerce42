@@ -1,16 +1,15 @@
 import React from "react"
 import styled from "styled-components"
 
-const ProductCard = ({ title, description, oldPrice, price }) => {
+const ProductCard = ({ imageUrl, title, description, price }) => {
   return (
     <ProductContainer>
       <ProdImg>
-        <img src="https://i.imgur.com/Td5qbSq.png" alt={title} />
+        <img src={imageUrl} alt={title} />
       </ProdImg>
       <ProdInfo>
         <ProdName>{title}</ProdName>
         <ProdDescription>{description}</ProdDescription>
-        <OldPrice>{oldPrice}</OldPrice>
         <ProdPrice>R${price}</ProdPrice>
         <BtnAddCart>Adicionar ao Carrinho</BtnAddCart>
       </ProdInfo>
@@ -19,6 +18,7 @@ const ProductCard = ({ title, description, oldPrice, price }) => {
 }
 
 const ProductContainer = styled.div`
+  height: 25rem;
   font-family: "Rubik", sans-serif;
   border-radius: 10px;
   padding: 10px;
@@ -27,6 +27,7 @@ const ProductContainer = styled.div`
   box-shadow: 0px 5px 5px gray;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 `
 
 const ProdImg = styled.div`
@@ -57,18 +58,13 @@ const ProdDescription = styled.p`
   margin-bottom: 10px;
 `
 
-const OldPrice = styled.div`
-  font-size: 0.8em;
-  margin-bottom: 10px;
-  text-decoration: line-through;
-`
-
 const ProdPrice = styled.div`
   font-size: 1.2em;
   margin-bottom: 20px;
 `
 
 const BtnAddCart = styled.div`
+  cursor: pointer;
   color: white;
   width: 100%;
   height: 40px;
